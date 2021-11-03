@@ -40,7 +40,7 @@
   <body>
     <!--Navbar taken from bootstrap-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{% url 'home' %}">
       <large><i class="fab fa-uncharted"></i></large> Cyberplate
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -51,7 +51,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">All Cyberplates</a>
+          <a class="nav-link" href="{% url 'products' %}">All Cyberplates</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Artists</a>
