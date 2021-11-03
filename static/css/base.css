@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 html {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -7,11 +10,27 @@ body {
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Roboto', sans-serif;
 }
 
 .home-week-pick {
     height: 300px;
     max-width: 420;
     overflow-x: none;
+}
+
+.card {
+    opacity: 0.9
+}
+
+.this-weeks-container div img {
+    opacity: 1
+}
+
+
+@media (max-width: 1204px) {
+    .this-weeks-container div img {
+        height: 160px;
+        width: 160px;
+    }
 }

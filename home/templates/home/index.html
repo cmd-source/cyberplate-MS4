@@ -13,26 +13,24 @@
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">All Cyberplates</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Artists</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Collections
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Space</a>
+              <a class="dropdown-item" href="#">Cryptocurrency</a>
+              <a class="dropdown-item" href="#">Nature</a>
+              <a class="dropdown-item" href="#">Games</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,7 +40,7 @@
     </nav>
     <div class="text-center">
       <p class="navbar-light bg-dark text-white mx-auto">
-        Amazing variety of artworks to select from 
+        Amazing variety of artworks to select from with 2 for 1 special offer
       </p>
     </div>
     </header>
@@ -51,18 +49,23 @@
 {% block content %}
 <div class="container h-100">
     <div class="row h-100">
-        <div class="col-4 col-md-5 my-auto card bg-secondary">
-            <h5 class="display-4 logo-font text-white text-center">
+        <div class="col-4 col-md-5 col-sm-12 col-12 my-auto card bg-secondary">
+          <div class="this-weeks-container">
+            <h1 class="logo-font text-white text-center">
                 This weeks Cyberplate
-            </h5>
+            </h1>
             <div class="container text-center">
               <img src="media/bitcoin2.jpg" class="home-week-pick rounded-3">
+              <h5 class="text-white mt-3">Bitplate €49.99</h5>
+              <p class="text-white">Created By: CyberArtWork</p>
             </div>
+            
             <div class="my-5">
                 <h4 class="text-center">
                     <a href="" class="btn bg-dark btn-lg rounded-3 text-uppercase py-3 text-white" >Shop Now</a>
                 </h4>
             </div>
+          </div>
         </div>
     </div>
 </div>
