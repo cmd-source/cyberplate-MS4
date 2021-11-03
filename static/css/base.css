@@ -1,0 +1,17 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/media/ms4background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Lato';
+}
+
+.home-week-pick {
+    height: 300px;
+    max-width: 420;
+    overflow-x: none;
+}
