@@ -38,9 +38,61 @@
     <title>Cyberplate</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-      
-    </header>
+    <!--Navbar taken from bootstrap-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <large><i class="fab fa-uncharted"></i></large> Cyberplate
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Cyberplates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Artists</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Collections
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Space</a>
+            <a class="dropdown-item" href="#">Cryptocurrency</a>
+            <a class="dropdown-item" href="#">Nature</a>
+            <a class="dropdown-item" href="#">Games</a>
+          </div>
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <!-- Taken from CI walkthrough project Boutique Ado -->
+      <p class="my-1 ml-4">
+        {% if grand_total %}
+        ${{ grand_total|floatformat:2 }}
+        {% else %}
+        $0.00
+        {% endif %}
+      </p>
+      <h4><i class=" ml-3 fas fa-user"></i></h4>
+    </div>
+    
+  </nav>
+  <div class="text-center">
+    <p class="navbar-light bg-dark text-white mx-auto">
+      Amazing variety of artworks to select from with 2 for 1 special offer
+    </p>
+  </div>
+</header>
 
     {% if messages %}
     <div class="messages-container"></div>
@@ -57,4 +109,6 @@
 
     
   </body>
+
+  
 </html>

@@ -2,71 +2,40 @@
 {% load static %}
 
 {% block page_header %}
-
-    <header>
-    <!--Navbar taken from bootstrap-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"><large><i class="fab fa-uncharted"></i></large> Cyberplate</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">All Cyberplates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Artists</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Collections
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Space</a>
-              <a class="dropdown-item" href="#">Cryptocurrency</a>
-              <a class="dropdown-item" href="#">Nature</a>
-              <a class="dropdown-item" href="#">Games</a>
-            </div>
-          </li>
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-    <div class="text-center">
-      <p class="navbar-light bg-dark text-white mx-auto">
-        Amazing variety of artworks to select from with 2 for 1 special offer
-      </p>
-    </div>
-    </header>
 {% endblock %}
 
 {% block content %}
 <div class="container h-100">
-    <div class="row h-100">
-        <div class="col-4 col-md-5 col-sm-12 col-12 my-auto card bg-secondary">
-          <div class="this-weeks-container">
-            <h1 class="logo-font text-white text-center">
-                This weeks Cyberplate
-            </h1>
-            <div class="container text-center">
-              <img src="media/bitcoin2.jpg" class="home-week-pick rounded-3">
-              <h5 class="text-white mt-3">Bitplate €49.99</h5>
-              <p class="text-white">Created By: CyberArtWork</p>
-            </div>
-            
-            <div class="my-5">
-                <h4 class="text-center">
-                    <a href="" class="btn bg-dark btn-lg rounded-3 text-uppercase py-3 text-white" >Shop Now</a>
-                </h4>
-            </div>
-          </div>
+  <div class="row h-100">
+    <div class="col-4 col-md-5 col-sm-12 col-12 my-auto card bg-secondary">
+      <div class="this-weeks-container">
+        <h1 class="logo-font text-white text-center">
+          This weeks Cyberplate
+        </h1>
+        <div class="container text-center">
+          <img src="media/bitcoin2.jpg" class="home-week-pick rounded-3">
+          <h5 class="text-white mt-3">Bitplate €49.99</h5>
+          <p class="text-white">Created By: CyberArtWork</p>
         </div>
+
+        <div class="my-5">
+          <h4 class="text-center">
+            <a href="" class="btn bg-dark btn-lg rounded-3 text-uppercase py-3 text-white">Shop Now</a>
+          </h4>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<footer class="footer mt-auto py-3 mx-auto">
+  <div class="container mx-auto">
+    <h1 class="text-center">
+    <i class="text-white fab fa-facebook-square"></i>
+    <i class="text-white fab fa-twitter-square"></i>
+    <i class="text-white fab fa-linkedin"></i>
+    <i class="text-white fab fa-instagram-square"></i>
+  </h1>
+  </div>
+</footer>
 {% endblock %}
