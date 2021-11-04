@@ -17,22 +17,20 @@
       </div>
 
       <div class="row">
-        {% for cyberplate in all_products %}
-        <div class="col-lg-4 col-sm-12">
-          <div class="card bg-secondary border-3 mt-3">
-            <h5 class="text-center text-white mt-2">{{ cyberplate.name }}</h5>
-
-            <img src="../media/{{ cyberplate.image }}" alt="cyberplate.name">
-
-            <hr>
-            <p class="text-center text-white">€ {{ cyberplate.price }}</p>
-            <p class="text-center">
-              <a href="{% url 'product_view' cyberplate.id %}" class="btn bg-dark rounded-3 py-3 text-white">View Cyberplate</a>
-            </p>
-            <p class="text-center text-white">{{ cyberplate.description }}</p>
-          </div>
+        
+        <div class="card mx-auto bg-secondary border-3 mt-3 mr-2 ml-2">
+          <h3 class="text-center text-white mt-3">{{ selected_product.name }}</h3>
+          <br>
+          <img class="mr-2 ml-2" src="../media/{{ selected_product.image }}" alt="cyberplate.name">
+          <h4 class="text-center text-white mt-5">{{ selected_product.description }}</h4>
+          <h4 class="text-center text-white mt-5">€ {{ selected_product.price }}</h4>
+          <p class="text-center">
+            <a href="" class="btn bg-dark rounded-3 py-3 text-white">Add to bag</a>
+          </p>
         </div>
-        {% endfor %}
+        <p class="text-center ml-5">
+          <h2><a href="" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
+        </p>
       </div>
     </div>
   </div>
