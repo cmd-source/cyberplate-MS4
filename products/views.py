@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
 from .models import Product
 
 # Create your views here.
@@ -6,9 +8,22 @@ from .models import Product
 
 def products(request):
     ''' A view to return the products page'''
+
     all_products = Product.objects.all()
+    search = None
+
+    if request.GET:
+        if 'search' in request.GET:
+            search = request.GET['search']
+        else:
+            messages.error(request, 'This is not a vaild search')
+
+        searched_query = Q(name__icontains=search) | Q(description__icontains=search) 
+        all_products = all_products.filter(searched_query)
+
     context = {
-        'all_products': all_products
+        'all_products': all_products,
+        'search': search
     }
 
     return render(request, 'products/products.html', context)
