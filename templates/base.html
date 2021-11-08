@@ -54,7 +54,7 @@
           <a class="nav-link" href="{% url 'products' %}">All Cyberplates</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Artists</a>
+          <a class="nav-link" href="{% url 'artists' %}">Artists</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -95,7 +95,9 @@
 </header>
 
     {% if messages %}
-    <div class="messages-container"></div>
+    <div class="messages-container">
+      {{ messages }}
+    </div>
     {% endif %}
 
     {% block page_header %}
@@ -109,6 +111,15 @@
 
     
   </body>
-
+  <footer class="footer mt-auto py-3 mx-auto bg-dark">
+    <div class="container mx-auto">
+      <h1 class="text-center">
+      <i class="text-white fab fa-facebook-square"></i>
+      <i class="text-white fab fa-twitter-square"></i>
+      <i class="text-white fab fa-linkedin"></i>
+      <i class="text-white fab fa-instagram-square"></i>
+    </h1>
+    </div>
+  </footer>
   
 </html>

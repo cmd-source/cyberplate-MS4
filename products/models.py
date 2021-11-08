@@ -11,6 +11,7 @@ class Product_Category(models.Model):
     def __str__(self):
         return self.display_name
 
+
 class Artist(models.Model):
     name = models.CharField(max_length=30)
     display_name = models.CharField(max_length=30)
