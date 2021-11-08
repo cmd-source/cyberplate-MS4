@@ -15,7 +15,7 @@ class Product_Category(models.Model):
 class Artist(models.Model):
     name = models.CharField(max_length=30)
     display_name = models.CharField(max_length=30)
-
+    artist_key = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.display_name

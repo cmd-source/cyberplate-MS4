@@ -51,6 +51,15 @@ def artists(request):
     context = {
         'all_artists': all_artists,
     }
-    # print(request, 'products/artists.html', context)
 
     return render(request, 'products/artists.html', context)
+
+
+def artist_view(request, product_id):
+    ''' Opens a more detailed view of the Cyberplate selected on'''
+    selected_product = get_object_or_404(Product, pk=product_id)
+    context = {
+        'selected_product': selected_product
+    }
+
+    return render(request, 'products/artist_view.html', context)

@@ -19,8 +19,13 @@
       <div class="row">
         {% for artist in all_artists %}
         <div class="col-lg-4 col-sm-12">
-          <div class="card bg-secondary border-3 mt-3 text-white text-uppercase text-center"><a href="#"> {{ artist.name }} </a></div>
+          <div class="card bg-secondary border-3 mt-3 text-white text-uppercase text-center">
+            <p class="text-center">
+              <a href="{% url 'artist_view' product_id %}" class="btn bg-dark rounded-3 py-3 text-white mt-3">{{ artist.name }}</a>
+            </p>
+          </div>
         </div>
+        
         {% endfor %}
       </div>
     </div>

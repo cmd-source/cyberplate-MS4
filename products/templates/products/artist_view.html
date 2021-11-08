@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-12 card">
+      <div class="row">
+        <div class="col text-black logo-font text-center mt-3">
+          <h2>Cyberplates</h2>
+          <hr>
+
+        </div>
+      </div>
+
+      <div class="row">
+        {% if selected_product.artist == artist.name %}
+        <div class="card mx-auto bg-secondary border-3 mt-3 mr-2 ml-2">
+          <h3 class="text-center text-white mt-1">{{ selected_product.name }}</h3>
+          <br>
+          <img class="mr-2 ml-2" src="../media/{{ selected_product.image }}" alt="cyberplate.name">
+          <h4 class="text-center text-white mt-5">{{ selected_product.description }}</h4>
+          <h4 class="text-center text-white"> Artist: {{ selected_product.artist }}</h4>
+          <h4 class="text-center text-white"> Catagory: {{ selected_product.product_category }}</h4>
+          <h4 class="text-center text-white mt-5">€ {{ selected_product.price }}</h4>
+          <p class="text-center">
+            <a href="" class="btn bg-dark rounded-3 py-3 text-white">Add to bag</a>
+          </p>
+        </div>
+        {% endif %}
+        <p class="text-center ml-5">
+          <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer mt-auto py-3 mx-auto">
+  <div class="container mx-auto">
+    <h1 class="text-center">
+      <i class="text-white fab fa-facebook-square"></i>
+      <i class="text-white fab fa-twitter-square"></i>
+      <i class="text-white fab fa-linkedin"></i>
+      <i class="text-white fab fa-instagram-square"></i>
+    </h1>
+  </div>
+</footer>
+{% endblock %}
