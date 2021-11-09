@@ -62,10 +62,10 @@
             Collections
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Space</a>
-            <a class="dropdown-item" href="#">Cryptocurrency</a>
-            <a class="dropdown-item" href="#">Nature</a>
-            <a class="dropdown-item" href="#">Games</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category_selected=1">Space</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category_selected=2">Cryptocurrency</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category_selected=3">Nature</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category_selected=4">Games</a>
           </div>
         </li>
 

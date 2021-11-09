@@ -1,31 +1,43 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Artist
+from .models import Product, Artist, Product_Category
 
 
 # Create your views here.
-
+ 
 
 def products(request):
     ''' A view to return the products page'''
 
     all_products = Product.objects.all()
     search = None
+    categories = None
 
     if request.GET:
+        if 'category_selected' in request.GET:
+            categories = request.GET['category_selected']
+            all_products = Product.objects.filter(product_category=categories)
+            categories = Product.objects.filter(name=categories)
+            
+            print("look at me" , request.GET['category_selected'])
+            print("look at me" , all_products)
+            print("look at me" , categories)
+
+
         if 'search' in request.GET:
             search = request.GET['search']
             if not search:
                 messages.error(request, 'This is not a vaild search')
                 return redirect(reverse('products'))
 
-        searched_query = Q(name__icontains=search) | Q(description__icontains=search) 
-        all_products = all_products.filter(searched_query)
+            searched_query = Q(name__icontains=search) | Q(description__icontains=search) 
+            all_products = all_products.filter(searched_query)
 
     context = {
         'all_products': all_products,
-        'search': search
+        'search': search,
+        'current_categories': categories
     }
 
     return render(request, 'products/products.html', context)
@@ -55,11 +67,11 @@ def artists(request):
     return render(request, 'products/artists.html', context)
 
 
-def artist_view(request, product_id):
+def artist_view(request, artist_id):
     ''' Opens a more detailed view of the Cyberplate selected on'''
-    selected_product = get_object_or_404(Product, pk=product_id)
+    selected_artist = get_object_or_404(Product, pk=artist_id)
     context = {
-        'selected_product': selected_product
+        'selected_artist': selected_artist
     }
 
     return render(request, 'products/artist_view.html', context)

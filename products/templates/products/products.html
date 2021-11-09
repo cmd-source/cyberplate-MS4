@@ -21,8 +21,8 @@
         <div class="col-lg-4 col-sm-12">
           <div class="card bg-secondary border-3 mt-3">
             <h5 class="text-center text-white mt-2">{{ cyberplate.name }}</h5>
-
-            <img src="../media/{{ cyberplate.image }}" alt="cyberplate.name">
+            MEDIA_URL: {{ MEDIA_URL }}
+            <img src="{{ MEDIA_URL }}{{ cyberplate.image }}" alt="cyberplate.name">
 
             <hr>
             <p class="text-center text-white">€ {{ cyberplate.price }}</p>
