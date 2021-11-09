@@ -76,6 +76,7 @@
       </form>
 
       <!-- Taken from CI walkthrough project Boutique Ado -->
+      <a href="{% url 'shopping_bag' %}">
       <p class="my-1 ml-4">
         {% if grand_total %}
         ${{ grand_total|floatformat:2 }}
@@ -83,6 +84,7 @@
         $0.00
         {% endif %}
       </p>
+      </a>
       <h4><i class=" ml-3 fas fa-user"></i></h4>
     </div>
     
