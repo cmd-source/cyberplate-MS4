@@ -16,36 +16,35 @@
         </div>
       </div>
 
-      <div class="row">
-        
-        <div class="card mx-auto bg-secondary border-3 mt-3 mr-2 ml-2">
-          <h3 class="text-center text-white mt-1">{{ selected_product.name }}</h3>
-          <br>
-          <img class="mr-2 ml-2" src="{{ MEDIA_URL }}{{ selected_product.image }}" alt="cyberplate.name">
-          <h4 class="text-center text-white mt-5">{{ selected_product.description }}</h4>
-          <h4 class="text-center text-white"> Artist: {{ selected_product.artist }}</h4>
-          <h4 class="text-center text-white"> Catagory: {{ selected_product.product_category }}</h4>
-          <h4 class="text-center text-white mt-5">€ {{ selected_product.price }}</h4>
-          <p class="text-center">
-            <a href="" class="btn bg-dark rounded-3 py-3 text-white">Add to bag</a>
+      <form action=" {% url 'add_product_to_bag' selected_product.id}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+
+          <div class="card mx-auto bg-secondary border-3 mt-3 mr-2 ml-2">
+            <h3 class="text-center text-white mt-1">{{ selected_product.name }}</h3>
+            <br>
+            <img class="mr-2 ml-2" src="{{ MEDIA_URL }}{{ selected_product.image }}" alt="cyberplate.name">
+            <h4 class="text-center text-white mt-5">{{ selected_product.description }}</h4>
+            <h4 class="text-center text-white"> Artist: {{ selected_product.artist }}</h4>
+            <h4 class="text-center text-white"> Catagory: {{ selected_product.product_category }}</h4>
+            <div class="form-group justify-content-center">
+              <h4 class="text-center text-white mt-5">€ {{ selected_product.price }}</h4>
+              <input type="number" name="quantity" value="1" min="1" id="id_qty_{{selected_product.id}} "
+                class="form-control mr-auto ml-auto text-center w-25 center-block mb-5">
+            </div>
+            <input type="hidden" name="redirect_url" value="{{ request.path}}">
+            <p class="text-center">
+              <a href="" class="btn bg-dark rounded-3 py-3 text-white">Add to bag</a>
+            </p>
+          </div>
+          <p class="text-center ml-5">
+            <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
+                  class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
           </p>
         </div>
-        <p class="text-center ml-5">
-          <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
-        </p>
-      </div>
+      </form>
     </div>
   </div>
 </div>
 
-<footer class="footer mt-auto py-3 mx-auto">
-  <div class="container mx-auto">
-    <h1 class="text-center">
-      <i class="text-white fab fa-facebook-square"></i>
-      <i class="text-white fab fa-twitter-square"></i>
-      <i class="text-white fab fa-linkedin"></i>
-      <i class="text-white fab fa-instagram-square"></i>
-    </h1>
-  </div>
-</footer>
 {% endblock %}
