@@ -80,8 +80,12 @@
       <p class="my-1 ml-4">
         {% if grand_total %}
         ${{ grand_total|floatformat:2 }}
+        <i class="fas fa-shopping-bag"></i>
         {% else %}
-        $0.00
+        <div class="text-center  ml-2">
+        <h5><i class="fas fa-shopping-bag"></i></h5>
+        <p class="text-small" >$0.00</p>
+        </div>
         {% endif %}
       </p>
       </a>
@@ -91,7 +95,7 @@
   </nav>
   <div class="text-center">
     <p class="navbar-light bg-dark text-white mx-auto">
-      Amazing variety of artworks to select from with 2 for 1 special offer
+      Amazing variety of artworks to select from with 2 (€ {{ free_delivery_threshold }}) for 1 (€ 49.99) special offer
     </p>
   </div>
 </header>
