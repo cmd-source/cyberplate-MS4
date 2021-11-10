@@ -8,11 +8,35 @@
 <div class="container h-100">
   <div class="overlay"></div>
   <div class="row h-100">
-    <div class="col-sm-12 col-12 my-auto card bg-secondary h-50">
+    <div class="col-sm-12 col-12 my-auto card bg-secondary h-90">
       {% if bag_items %}
-        <div class="reponsive-table">
-            {{ bag_items }}
-        </div>
+        <table class="reponsive-table">
+            
+          <thead class="text-white">
+            <th scope="col" class="bg-dark">Products</th>
+            <th scope="col" class="bg-dark">Name</th>
+            <th scope="col" class="bg-dark">Price</th>
+            <th scope="col" class="bg-dark">Quantity</th>
+            <th scope="col" class="bg-dark">Subtotal</th>
+          </thead>
+
+          {% for cyberplate in bag_items %}
+            <tr>
+              <td class="w-25 py-5">
+                <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}" alt="{{ cyberplate.product.name }}">
+              </td>
+              <td class=" py-5 text-white">
+                <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
+              </td>
+              <td class=" py-5 text-white">
+                <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
+              </td>
+              <td class=" py-5 text-white">
+                <p class="text-white"><strong> {{ cyberplate.quantity }} </strong></p>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
       {% else %}
         <div class="reponsive-table">
             <h3 class="text-white text-center">
