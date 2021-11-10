@@ -9,9 +9,9 @@
   <div class="overlay"></div>
   <div class="row h-100">
     <div class="col-sm-12 col-12 my-auto card bg-secondary h-50">
-      {% if items_in_the_shopping_bag %}
+      {% if bag_items %}
         <div class="reponsive-table">
-
+            {{ bag_items }}
         </div>
       {% else %}
         <div class="reponsive-table">

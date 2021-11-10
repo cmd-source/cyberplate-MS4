@@ -21,5 +21,5 @@ def add_product_to_bag(request, item_id):
         bag[item_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
+    print("Printing bag items ", request.session['bag'])
     return redirect(redirect_url)
