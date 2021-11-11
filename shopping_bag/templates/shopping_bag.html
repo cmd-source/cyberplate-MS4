@@ -8,46 +8,66 @@
 <div class="container h-100">
   <div class="overlay"></div>
   <div class="row h-100">
-    <div class="col-sm-12 col-12 my-auto card bg-secondary h-90">
+    <div class="col-sm-12 col-12 my-auto card bg-secondary h-90 rounded">
       {% if bag_items %}
-        <table class="reponsive-table">
-            
-          <thead class="text-white">
+      <table class="reponsive-table rounded">
+
+        <thead class="text-white">
+          <tr>
             <th scope="col" class="bg-dark">Cyberplate</th>
             <th scope="col" class="bg-dark">Name</th>
             <th scope="col" class="bg-dark">Price</th>
             <th scope="col" class="bg-dark">Quantity</th>
             <th scope="col" class="bg-dark">Subtotal</th>
-          </thead>
+          </tr>
+        </thead>
 
-          {% for cyberplate in bag_items %}
-            <tr>
-              <td class="w-25 py-5">
-                <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}" alt="{{ cyberplate.product.name }}">
-              </td>
-              <td class=" py-5 text-white">
-                <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
-              </td>
-              <td class=" py-5 text-white">
-                <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
-              </td>
-              <td class=" py-5 text-white">
-                <p class="text-white"><strong> {{ cyberplate.quantity }} </strong></p>
-              </td>
-            </tr>
-          {% endfor %}
-        </table>
+        {% for cyberplate in bag_items %}
+        <tr>
+          <td class="w-25 py-5">
+            <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}"
+              alt="{{ cyberplate.product.name }}">
+          </td>
+          <td class=" py-5 text-white w-25">
+            <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
+            <p class="text-white"> {{ cyberplate.product.description }} </p>
+          </td>
+          <td class=" py-5 text-white">
+            <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
+          </td>
+          <td class=" py-5 text-white">
+            <p class="text-white"><strong> {{ cyberplate.quantity }} </strong></p>
+          </td>
+          <td class=" py-5 text-white">
+            <p class="text-white"><strong> {{ cyberplate.product.price }} </strong></p>
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td>
+            <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
+                  class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <h2><a href="{% url 'products' %}" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3">Checkout <i class="fas fa-shopping-cart"></i></a></h2>
+          </td>
+        </tr>
+      </table>
       {% else %}
-        <div class="reponsive-table">
-            <h3 class="text-white text-center">
-              There is nothing in your shopping bag. Return to Cyberplates
-            </h3>
-            <p class="text-center mx-auto ml-5">
-              <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
-            </p>
-        </div>
-        {% endif %}
+      <div class="reponsive-table">
+        <h3 class="text-white text-center">
+          There is nothing in your shopping bag. Return to Cyberplates
+        </h3>
+        <p class="text-center mx-auto ml-5">
+          <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
+                class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
+        </p>
       </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
