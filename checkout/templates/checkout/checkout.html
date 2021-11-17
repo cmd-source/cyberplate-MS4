@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="container h-100">
+  <div class="overlay"></div>
+  <div class="row h-100">
+        <div class="col">
+            <hr>
+            <h3 class="logo-font">Payment Details</h3>
+        </div>
+        <div class="col">
+            <hr>
+            <h6 class="logo-font">Please fill out the form below:</h6>
+            <form action="{% url 'checkout' %}" method="POST" id=payment-form>
+                {% csrf_token %}
+                <fieldset> 
+                    {{ users_order.first_name | as_crispy_field }}
+                    {{ users_order.last_name | as_crispy_field }}
+                </fieldset>
+                <fieldset>
+                    {{ users_order.email | as_crispy_field }}
+                    {{ users_order.phone | as_crispy_field }}
+                    {{ users_order.street | as_crispy_field }}
+                    {{ users_order.town | as_crispy_field }}
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
