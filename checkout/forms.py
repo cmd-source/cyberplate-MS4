@@ -1,10 +1,11 @@
 from django import forms
-from models import Order
+from .models import Order
 
 class UsersOrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('users_order_number','first_name', 'last_name', 'email', 'phone' , 'street', 'town', 'country',) 
+        fields = ('first_name', 'last_name', 'email', 'phone' , 'street', 'town', 'country',)
+
 
 
         # Taken directly from the Code Institutes walkthrough Project Boutique Ado
@@ -15,13 +16,12 @@ class UsersOrderForm(forms.ModelForm):
             """
             super().__init__(*args, **kwargs)
             placeholders = {
-                'full_name': 'Full Name',
-                'email': 'Email Address',
-                'phone_number': 'Phone Number',
-                'country': 'Country',
+                'first_name': 'first_name',
+                'last_name': 'last_name',
+                'email': 'email',
+                'phone': 'phone',
                 'postcode': 'Postal Code',
-                'town_or_city': 'Town or City',
-                'street_address1': 'Street Address 1',
-                'street_address2': 'Street Address 2',
-                'county': 'County',
+                'street': 'street',
+                'town': 'town',
+                'country': 'country',
             }
