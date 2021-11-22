@@ -6,32 +6,74 @@
 
 {% block content %}
 <div class="container h-100">
-  <div class="overlay"></div>
-  <div class="row h-100">
-        <div class="col">
+    <div class="overlay"></div>
+    <div class="row h-100">
+        <div class="col card">
             <hr>
             <h3 class="logo-font">Payment Details</h3>
-        </div>
-        <div class="col">
-            <hr>
-            <h6 class="logo-font">Please fill out the form below:</h6>
-            <form action="{% url 'checkout' %}" method="POST" id=payment-form>
-                {% csrf_token %}
-                <fieldset> 
-                    {{ users_order.first_name | as_crispy_field }}
-                    {{ users_order.last_name | as_crispy_field }}
-                </fieldset>
-                <fieldset>
-                    {{ users_order.email | as_crispy_field }}
-                    {{ users_order.phone | as_crispy_field }}
-                    {{ users_order.street | as_crispy_field }}
-                    {{ users_order.town | as_crispy_field }}
-                </fieldset>
+            <div>
+                <hr>
+                <h6 class="logo-font">Please fill out the form below:</h6>
+                <form action="{% url 'checkout' %}" method="POST" id=payment-form>
+                    {% csrf_token %}
+                    <fieldset>
+                        {{ users_order.first_name | as_crispy_field }}
+                        {{ users_order.last_name | as_crispy_field }}
+                    </fieldset>
+                    <hr>
+                    <fieldset>
+                        {{ users_order.email | as_crispy_field }}
+                        {{ users_order.phone | as_crispy_field }}
+                        {{ users_order.street | as_crispy_field }}
+                        {{ users_order.town | as_crispy_field }}
+                    </fieldset>
+                    <hr>
+                    <fieldset>
+                        <h2><a href="{% url 'shopping_bag' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
+                                    class="fas fa-caret-square-left"></i> Back to adjust bag</a>
 
-            </form>
+                        <a href="#" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3">Complete Order <i
+                                    class="fas fa-lock"></i></i></a></h2>
+                        <p class="float-right text-danger" >Your card will be charged €{{ grand_total|floatformat:2 }}</p>
+                    </fieldset>
+                    
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="col card mr-5">
+
+            {% if bag_items %}
+      <table class="table table-sm table-borderless">
+
+        <thead class="text-white">
+          <tr>
+            <th scope="col" class="bg-dark">Name</th>
+            <th scope="col" class="bg-dark">Price</th>
+            <th scope="col" class="bg-dark">Quantity</th>
+          </tr>
+        </thead>
+
+        {% for cyberplate in bag_items %}
+        <tr>
+          <td class="w-25 py-5">
+            <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}"
+              alt="{{ cyberplate.product.name }}">
+          </td>
+          <td class=" py-5 text-back">
+            <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
+          </td>
+          <td class=" py-5 text-back">
+            <p class="text-white"><strong> {{ cyberplate.quantity }} </strong></p>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
         </div>
     </div>
-  </div>
+</div>
 </div>
 
 {% endblock %}
