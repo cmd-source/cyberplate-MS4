@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
+from django.conf import settings
 
 # Create your views here.
 
 
 def shopping_bag(request):
     ''' A view to return the users shopping bag page'''
+    print("look here settings.FREE_DELIVERY_THRESHOLD> ", settings.FREE_DELIVERY_THRESHOLD)
     return render(request, 'shopping_bag.html')
 
 
@@ -22,4 +24,5 @@ def add_product_to_bag(request, item_id):
 
     request.session['bag'] = bag
     print("Printing bag items ", request.session['bag'])
+    print("look here> ", settings.FREE_DELIVERY_THRESHOLD)
     return redirect(redirect_url)
