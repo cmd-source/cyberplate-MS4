@@ -14,9 +14,10 @@ def checkout(request):
     users_order = UsersOrderForm()
     template = 'checkout/checkout.html'
     context = {
-        'users_order': users_order
+        'users_order': users_order,
+        'stripe_public_key': 'pk_test_51K01qvDRUt70JrpHQW1Dccpt6WN7MBu8jkc8r2ruCcmWUXIxleZNTBloQDR9kFqOiJNOfyALVRgF5ADEuXxWQglf00M4aE8CRv',
+        'stripe_secret_key': 'test client secret',
     }
 
-    print("look here> ", settings.FREE_DELIVERY_THRESHOLD)
 
     return render(request, template, context)
