@@ -6,11 +6,13 @@ var elements = stripe.elements();
 var style = { 
     base: {
       color: '#000',
+      border: '#000',
       fontWeight: '500',
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       '::placeholder': {
         color: '#aab7c4',
+        fontSize: '16px',
       },
     },
     invalid: {
@@ -22,5 +24,20 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
-// Handing realtime validation errors
 
+// Handing realtime validation errors, taken directly from Boutique Ado
+
+card.addEventListener('change', function (event) {
+  var errorDiv = document.getElementById('card-errors');
+  if (event.error) {
+      var html = `
+          <span class="icon" role="alert">
+              <i class="fas fa-times"></i>
+          </span>
+          <span>${event.error.message}</span>
+      `;
+      $(errorDiv).html(html);
+  } else {
+      errorDiv.textContent = '';
+  }
+});

@@ -27,7 +27,7 @@
                         {{ users_order.street | as_crispy_field }}
                         {{ users_order.town | as_crispy_field }}
                     </fieldset>
-                    <hr>
+                    <hr class="card_display">
                     <!-- Taken directly from the Code Institutes walkthrough Project Boutique Ado -->
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
@@ -37,6 +37,7 @@
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
+                    <hr class="card_display">
                     <fieldset>
                         <h2><a href="{% url 'shopping_bag' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
                                     class="fas fa-caret-square-left"></i> Back to adjust bag</a>

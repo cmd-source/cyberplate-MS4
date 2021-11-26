@@ -8,7 +8,7 @@ class UsersOrderForm(forms.ModelForm):
 
 
 
-        # Taken directly from the Code Institutes walkthrough Project Boutique Ado
+        # Taken and altered from the Code Institutes walkthrough Project Boutique Ado
         def __init__(self, *args, **kwargs):
             """
             Add placeholders and classes, remove auto-generated
