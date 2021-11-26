@@ -20,7 +20,6 @@ class UsersOrderForm(forms.ModelForm):
                 'last_name': 'last_name',
                 'email': 'email',
                 'phone': 'phone',
-                'postcode': 'Postal Code',
                 'street': 'street',
                 'town': 'town',
                 'country': 'country',
