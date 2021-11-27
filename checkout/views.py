@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .forms import UsersOrderForm, Order
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 import stripe
 from shopping_bag.context import bag_contents
+from products.models import Product
+from .models import Order
 # Create your views here.
 
 
@@ -23,9 +25,19 @@ def checkout(request):
             'street': request.POST['street'],
             'town': request.POST['town'],
         }
-        order_form = OrderForm(form_data)
+        order_form = Order(form_data)
         if order_form.is_valid():
             order = order_form.save()
+            for item_id, item_data in cyberplates_for_checkout.items():
+                    product = Product.objects.get(id=item_id)
+                    if isinstance(item_data, int):
+                        order_line_item = OrderItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+        return(reverse('order_success', args=[order.users_order_number]))
 
     else:
         cyberplates_for_checkout = request.session.get('bag', {})
@@ -48,5 +60,20 @@ def checkout(request):
             'stripe_secret_key': intent.client_secret,
         }
 
-
         return render(request, template, context)
+
+
+def order_complete(request, users_order_number):
+
+
+    order = get_object_or_404(Order, users_order_number=users_order_number)
+
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    template = 'checkout/order_success.html'
+    context = {
+        'order': order
+    }
+
+    return render(request, render, template)
