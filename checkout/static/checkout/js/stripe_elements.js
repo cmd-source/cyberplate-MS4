@@ -44,7 +44,9 @@ card.addEventListener('change', function (event) {
 
 // Handle form submit, taken directly from Boutique Ado
 
-var form = document.getElementById('payment-form');
+var form = document.querySelector('form');
+// var form = document.getElementById('payment-form');
+
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
@@ -67,6 +69,7 @@ form.addEventListener('submit', function(ev) {
             $('#submit-button').attr('disabled', false);
         } else {
             if (result.paymentIntent.status === 'succeeded') {
+                console.log(form)
                 form.submit();
             }
         }

@@ -18,7 +18,7 @@ class Order(models.Model):
 
     def order_number(self):
 
-        return uuid.uuid4.hex.upper()
+        return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):
 

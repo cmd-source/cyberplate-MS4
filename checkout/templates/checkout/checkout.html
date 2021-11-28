@@ -14,7 +14,7 @@
             <div>
                 <hr>
                 <h6 class="logo-font">Please fill out the form below:</h6>
-                <form action="{% url 'checkout' %}" method="POST" id=payment-form>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset>
                         {{ users_order.first_name | as_crispy_field }}
