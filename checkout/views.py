@@ -31,6 +31,9 @@ def checkout(request):
             order = order_form.save()
             for item_id, item_data in cyberplates_for_checkout.items():
                 product = Product.objects.get(id=item_id)
+                print('Item ID >> ', item_id)
+                print('Item DATA >> ', item_data)
+                print('Item PRODUCT >> ', product)
                 if isinstance(item_data, int):
                     order_line_item = OrderItem(
                         order_item=order,
@@ -38,6 +41,7 @@ def checkout(request):
                         quantity=item_data,
                     )
                     order_line_item.save()
+                    print('Order line item >> ', order_line_item)
             return(reverse('order_complete', args=[order.users_order_number]))
     else:
         cyberplates_for_checkout = request.session.get('bag', {})

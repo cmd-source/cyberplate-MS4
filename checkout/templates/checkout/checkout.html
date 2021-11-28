@@ -41,11 +41,11 @@
                     <fieldset>
                         <h2><a href="{% url 'shopping_bag' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
                                     class="fas fa-caret-square-left"></i> Back to adjust bag</a>
-
-                            <button href="#" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3" id="submit">Complete Order <i
-                                    class="fas fa-lock"></i></i>
+                            <button href="#" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3"
+                                id="submit">Complete Order <i class="fas fa-lock"></i></i>
                             </button>
-                                </h2>
+
+                        </h2>
                         <p class="float-right text-danger">Your card will be charged €{{ grand_total|floatformat:2 }}
                         </p>
                     </fieldset>

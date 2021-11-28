@@ -20,6 +20,7 @@ class Order(models.Model):
 
         return uuid.uuid4().hex.upper()
 
+
     def save(self, *args, **kwargs):
 
         if not self.users_order_number:
