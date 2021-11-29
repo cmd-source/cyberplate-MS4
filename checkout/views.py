@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
 from .forms import UsersOrderForm, Order
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
@@ -41,8 +41,7 @@ def checkout(request):
                         quantity=item_data,
                     )
                     order_line_item.save()
-                    print('Order line item >> ', order_line_item)
-            return(reverse('order_complete', args=[order.users_order_number]))
+            return(HttpResponseRedirect(reverse('order_complete', args=[order.users_order_number])))
     else:
         cyberplates_for_checkout = request.session.get('bag', {})
         print('Printing if ELSE',cyberplates_for_checkout)
@@ -79,4 +78,4 @@ def order_complete(request, users_order_number):
         'order': order
     }
 
-    return render(request, render, template)
+    return render(request, template, context)
