@@ -36,11 +36,6 @@ def webhook(request):
     print('Webhook success! ')
     return HttpResponse(status=200)
 
-
-
-
-
-'''
     # Set up a webhook handler
     handler = StripeWH_Handler(request)
 
@@ -58,9 +53,5 @@ def webhook(request):
     event_handler = event_map.get(event_type, handler.handle_event)
 
     # Call the event handler with the event
-    print('Webhook success response!')
-    return HttpResponse(status=200)
-
     response = event_handler(event)
     return response
-'''
