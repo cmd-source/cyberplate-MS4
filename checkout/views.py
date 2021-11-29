@@ -31,9 +31,6 @@ def checkout(request):
             order = order_form.save()
             for item_id, item_data in cyberplates_for_checkout.items():
                 product = Product.objects.get(id=item_id)
-                print('Item ID >> ', item_id)
-                print('Item DATA >> ', item_data)
-                print('Item PRODUCT >> ', product)
                 if isinstance(item_data, int):
                     order_line_item = OrderItem(
                         order_item=order,
@@ -44,7 +41,6 @@ def checkout(request):
             return(HttpResponseRedirect(reverse('order_complete', args=[order.users_order_number])))
     else:
         cyberplates_for_checkout = request.session.get('bag', {})
-        print('Printing if ELSE',cyberplates_for_checkout)
         if not cyberplates_for_checkout:
             return redirect(reverse('products'))
 
@@ -69,13 +65,19 @@ def checkout(request):
 
 def order_complete(request, users_order_number):
     order = get_object_or_404(Order, users_order_number=users_order_number)
+    cyberplates_for_checkout = request.session.get('bag', {})
+
+    current_bag = bag_contents(request)
+    total = current_bag['grand_total']
+    print('Printing total >> ', current_bag)
 
     if 'bag' in request.session:
         del request.session['bag']
 
     template = 'checkout/order_success.html'
     context = {
-        'order': order
+        'order': order,
+        'total': total
     }
 
     return render(request, template, context)
