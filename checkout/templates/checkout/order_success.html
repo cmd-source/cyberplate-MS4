@@ -10,13 +10,80 @@
     <div class="row h-100">
         <div class="col card">
             <hr>
-            <h3 class="logo-font">Thank you! </h3>
+            <h3 class="logo-font">Order Complete! </h3>
             <div>
                 <hr>
-                <h6 class="logo-font">An email has been sent to {{ order.email }}</h6>
-                <hr>
                 <h5 class="logo-font">Your Order Has Been Complete, details below:</h5>
+                <hr>
+                <br>
+                <h5 class="logo-font">Thanks {{ order.first_name }}</h5>
+                <h6 class="logo-font">An email has been sent to {{ order.email }}</h6>
+                <br>
+                <div class="container-fluid mt-5 justify-content-center">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>Order Number:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.users_order_number }}</h6>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>First Name:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.first_name }}</h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>Last Name:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.last_name }}</h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>Address:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.street }}</h6>
+                        <h6>{{ order.town }}</h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>Amount Charged:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.grand_total }}</h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <h6>Date:</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <h6>{{ order.order_date }}</h6>
+                    </div> 
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row justify-content-between mx-auto">
+                    <h1> <i class="fas fa-user-astronaut mx-auto"></i> </h1>
+                    <h1> <i class="fas fa-atom mx-auto"></i> </h1>
+                    <h1> <i class="fas fa-radiation-alt mx-auto"></i> </h1>
+                    <h1> <i class="fas fa-laptop-code mx-auto"></i> </h1>
+                </div>
+            </div>
             </div>
         </div>
 
