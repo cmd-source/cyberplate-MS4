@@ -27,7 +27,7 @@
                         {{ users_order.street | as_crispy_field }}
                         {{ users_order.town | as_crispy_field }}
                     </fieldset>
-                    <hr class="card_display">
+                    <hr>
                     <!-- Taken directly from the Code Institutes walkthrough Project Boutique Ado -->
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
@@ -38,6 +38,19 @@
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
                     <hr class="card_display">
+                    <fieldset>
+                    <div class="form-check form-check-inline float-right mr-0">
+                        {% if user.is_authenticated %}
+                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                        {% else %}
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                            </label>
+                        {% endif %}
+                    </div>
+                    </fieldset>
                     <fieldset>
                         <h2><a href="{% url 'shopping_bag' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
                                     class="fas fa-caret-square-left"></i> Back to adjust bag</a>
@@ -62,6 +75,6 @@
 {% block postload_js %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ stripe_secret_key|json_script:"id_stripe_secret_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
