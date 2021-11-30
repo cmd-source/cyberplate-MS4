@@ -55,7 +55,7 @@ form.addEventListener('submit', function (ev) {
     card.update({
         'disabled': true
     });
-    $('#submit').attr('disabled', true);
+    $('#btnSubmit').attr('disabled', true);
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form
@@ -67,28 +67,25 @@ form.addEventListener('submit', function (ev) {
     };
     var url = '/checkout/cache_checkout_data/';
     
-    $.post(url, postData).done(function () {
+    $.post(url, postData).done(function() {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
-                    first: $.trim(form.first_name.value),
-                    last: $.trim(form.last_name.value),
+                    name: $.trim(form.first_name.value),
                     email: $.trim(form.email.value),
-                    mobile: $.trim(form.phone.value),
+                    phone: $.trim(form.phone.value),
                     address: {
-                        street: $.trim(form.street.value),
-                        town: $.trim(form.town.value),
+                        line1: $.trim(form.street.value),
+                        city: $.trim(form.town.value),
                     }
                 }
             },
             shipping: {
-                    first: $.trim(form.first_name.value),
-                    last: $.trim(form.last_name.value),
-                    postal_code: $.trim(form.postcode.value),
+                    name: $.trim(form.first_name.value),
                     address: {
-                        street: $.trim(form.street.value),
-                        town: $.trim(form.town.value),
+                        line1: $.trim(form.street.value),
+                        city: $.trim(form.town.value),
                     },
                 }
             }).then(function (result) {
