@@ -1,45 +1,56 @@
 {% load static %}
 <html lang="en">
-  <head>
 
-    <!-- base template was largely influenced by CI walkthrough project Boutique Ado -->
+<head>
 
-    {% block meta %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
+  <!-- base template was largely influenced by CI walkthrough project Boutique Ado -->
 
-    {% block extra_meta %}
-    {% endblock %}
+  {% block meta %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
 
-    <!-- Bootstrap CSS -->
-    {% block corecss %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    {% endblock %}
+  {% block extra_meta %}
+  {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+  <!-- Bootstrap CSS -->
+  {% block corecss %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  {% endblock %}
 
-    {% block corejs %}
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    {% endblock %}
+  {% block extra_css %}
+  {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
+  {% block corejs %}
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  {% endblock %}
 
-    <title>Cyberplate</title>
-  </head>
-  <body>
-    <!--Navbar taken from bootstrap-->
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>Cyberplate</title>
+</head>
+
+<body>
+  <!--Navbar taken from bootstrap-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'home' %}">
       <large><i class="fab fa-uncharted"></i></large> Cyberplate
@@ -78,47 +89,46 @@
 
       <!-- Taken from CI walkthrough project Boutique Ado -->
       <a href="{% url 'shopping_bag' %}">
-      <p class="my-1 ml-4">
-        {% if grand_total %}
-        €{{ grand_total|floatformat:2 }}
-        <i class="fas fa-shopping-bag"></i>
-        {% else %}
-        <div class="text-center  ml-2">
-        <h5><i class="fas fa-shopping-bag"></i></h5>
-        <p class="text-small" >$0.00</p>
-        </div>
-        {% endif %}
-      </p>
+        <p class="my-1 ml-4">
+          {% if grand_total %}
+          €{{ grand_total|floatformat:2 }}
+          <i class="fas fa-shopping-bag"></i>
+          {% else %}
+          <div class="text-center  ml-2">
+            <h5><i class="fas fa-shopping-bag"></i></h5>
+            <p class="text-small">$0.00</p>
+          </div>
+          {% endif %}
+        </p>
       </a>
       <a href="{% url 'profile' %}">
-      <h4><i class=" ml-3 fas fa-user"></i></h4>
+        <h4><i class=" ml-3 fas fa-user"></i></h4>
       </a>
-    </div>
-    
+
   </nav>
   <div class="text-center">
     <p class="navbar-light bg-dark text-white mx-auto">
       Amazing variety of artworks to select from with 2 (€ {{ free_delivery_threshold }}) for 1 (€ 49.99) special offer
     </p>
   </div>
-</header>
+  </header>
 
-    {% if messages %}
-    <div class="messages-container">
-      {{ messages }}
-    </div>
-    {% endif %}
+  {% if messages %}
+  <div class="messages-container">
+    {{ messages }}
+  </div>
+  {% endif %}
 
-    {% block page_header %}
-    {% endblock %}
+  {% block page_header %}
+  {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 
-    {% block postload_js %}
-    {% endblock %}
+  {% block postload_js %}
+  {% endblock %}
 
-    
-  </body>
-  
+
+</body>
+
 </html>
