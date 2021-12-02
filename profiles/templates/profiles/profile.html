@@ -11,7 +11,17 @@
         <div class="col card">
             <hr>
             <h3 class="logo-font">My Profile</h3>
-            {{ profile }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <h6 class="logo-font">Profile Information</h6>
+                    <form action="{% url 'profile' %}" method="POST" id="user-profile-form"></form>
+                    {% crsf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="col-lg-6">
+
+                </div>
+            </div>
         </div>
 
     </div>
