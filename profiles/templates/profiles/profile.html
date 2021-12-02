@@ -14,12 +14,16 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h6 class="logo-font">Profile Information</h6>
-                    <form action="{% url 'profile' %}" method="POST" id="user-profile-form"></form>
-                    {% crsf_token %}
-                    {{ form|crispy }}
+                    <form action="{% url 'profile' %}" method="POST" id="user-profile-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button href="#" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3"
+                            id="btnUpdateProfile">Update this information <i class="fas fa-lock"></i>
+                        </button>
+                    </form>
                 </div>
                 <div class="col-lg-6">
-
+                    {{ orders.orders }}
                 </div>
             </div>
         </div>

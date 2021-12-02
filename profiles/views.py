@@ -8,11 +8,13 @@ from .forms import UsersProfileForm
 def profile(request):
 
     profile = get_object_or_404(UserProfile, user=request.user)
+
     form = UsersProfileForm(instance=profile)
-    orders = profile.orders.all()
+    #orders = profile.orders.all()
+
     template = 'profiles/profile.html'
     context = {
-        'profile': profile,
-        'orders': orders
+        'form': form,
+        #'orders': orders
     }
     return render(request, template, context)
