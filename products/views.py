@@ -19,11 +19,6 @@ def products(request):
             categories = request.GET['category_selected']
             all_products = Product.objects.filter(product_category=categories)
             categories = Product.objects.filter(name=categories)
-            
-            print("look at me" , request.GET['category_selected'])
-            print("look at me" , all_products)
-            print("look at me" , categories)
-
 
         if 'search' in request.GET:
             search = request.GET['search']
