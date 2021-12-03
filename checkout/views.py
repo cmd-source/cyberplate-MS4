@@ -9,6 +9,8 @@ from shopping_bag.context import bag_contents
 from products.models import Product
 from .models import Order, OrderItem
 import json
+from profiles.forms import UsersProfileForm
+from profiles.models import UserProfile
 # Create your views here.
 
 
@@ -87,12 +89,32 @@ def checkout(request):
 
 
 def order_complete(request, users_order_number):
+    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, users_order_number=users_order_number)
     cyberplates_for_checkout = request.session.get('bag', {})
 
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        #Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        if save_info:
+            profile_data = {
+                'def_first_name': order.first_name,
+                'def_last_name': order.last_name,
+                'def_email ': order.email,
+                'def_phone': order.phone,
+                'def_street ': order.street,
+                'def_town ': order.town,
+            }
+            user_profile_form = user_profile_form(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
+
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
-    print('Printing total >> ', current_bag)
 
     if 'bag' in request.session:
         del request.session['bag']
