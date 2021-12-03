@@ -7,29 +7,69 @@
 {% block content %}
 <div class="container h-100 w-100">
   <div class="row h-100">
-    <div class="col-4 col-md-6 col-sm-12 col-12 my-auto card bg-secondary">
-      <div class="this-weeks-container">
-        <h1 class="logo-font text-white text-center">
+    <div class="col-4 col-md-6 col-sm-12 col-12 my-auto">
+      <div class="this-weeks-container card bg-secondary">
+        <h1 class="logo-font text-white text-center mt-2">
           This weeks Cyberplate
         </h1>
         <div class="container text-center">
-          <img src="media/bitcoin2.jpg" class="home-week-pick rounded-3">
+          <img src="media/bitcoin2.jpg" class="home-week-pick rounded">
           <h5 class="text-white mt-3">Bitplate €49.99</h5>
           <p class="text-white">Created By: CyberArtWork</p>
         </div>
         <div class="text-center">
           <a class="btn btn-success" href="{% url 'account_login' %}"> Login </a>
+          <br>
+          <br>
           <a class="btn btn-info" href="{% url 'account_signup' %}">Sign Up</a>
         </div>
 
         <div class="my-5">
           <h4 class="text-center">
-            <a href="{% url 'products' %}" class="btn bg-dark btn-lg rounded-3 text-uppercase py-3 text-white btn-block">Shop Now</a>
+            <a href="{% url 'products' %}" class="btn bg-dark btn-primary rounded-3 text-uppercase py-3 text-white pl-5 pr-5">Shop Now</a>
           </h4>
         </div>
       </div>
+    
+      <br>
+
+    <div class="my-auto card bg-secondary">
+      <h4 class="text-white text-center mt-2"> Similar to this weeks Cyberplate </h4>
+      <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+      
+        <!-- The slideshow -->
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active mb-5 mt-4">
+            <img src="media/bitloading.png" class="img-bag rounded" alt="Los Angeles">
+          </div>
+          <div class="carousel-item mb-5 mt-4">
+            <img src="media/ether.jpg" class="img-bag rounded" alt="Chicago">
+          </div>
+          <div class="carousel-item mb-5 mt-4">
+            <img src="media/bitcoin.jpg" class="img-bag rounded" alt="New York">
+          </div>
+        </div>
+      
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      
+      </div>
     </div>
+
   </div>
+</div>
 </div>
 
 <footer class="footer mt-1 py-3 mx-auto bg-dark">
