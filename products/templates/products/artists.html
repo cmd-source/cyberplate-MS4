@@ -10,7 +10,7 @@
     <div class="col-12 card">
       <div class="row">
         <div class="col text-black logo-font text-center mt-3">
-          <h2>Cyberplates</h2>
+          <h2>Artists</h2>
           <hr>
 
         </div>
@@ -18,10 +18,11 @@
 
       <div class="row">
         {% for artist in all_artists %}
-        <div class="col-lg-4 col-sm-12">
+        <div class="col-lg-6 col-sm-12">
           <div class="card bg-secondary border-3 mt-3 text-white text-uppercase text-center">
+            <img src="{{ MEDIA_URL }}{{ artist.image }}" alt="artist.name">
             <p class="text-center">
-              <a href="{% url 'artist_view' product_id %}" class="btn bg-dark rounded-3 py-3 text-white mt-3">{{ artist.name }}</a>
+              <a href="#" class="btn bg-dark rounded-3 py-3 text-white mt-3">{{ artist.name }}</a>
             </p>
           </div>
         </div>

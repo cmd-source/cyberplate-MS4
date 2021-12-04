@@ -62,9 +62,10 @@ def artists(request):
     return render(request, 'products/artists.html', context)
 
 
+
 def artist_view(request, artist_id):
-    ''' Opens a more detailed view of the Cyberplate selected on'''
-    selected_artist = get_object_or_404(Product, pk=artist_id)
+    '''Opens a more detailed view of the Cyberplate selected on'''
+    selected_artist = get_object_or_404(Artist, pk=artist_id)
     context = {
         'selected_artist': selected_artist
     }
