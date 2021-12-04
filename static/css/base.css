@@ -35,6 +35,11 @@ body {
     }
 }
 
+.img-bag {
+    height: 200px;
+    width: 360px;
+}
+
 /* ------------------------------- Artist view */
 
 .artist-img {
@@ -42,7 +47,7 @@ body {
     width: 400px;
 }
 
-.related-work-img{
+.related-work-img {
     height: 240px;
     width: 380px;
 }
@@ -54,7 +59,7 @@ body {
     }
 }
 @media (max-width: 538px) {
-    .related-work-img{
+    .related-work-img {
         height: 120px;
         width: 260px;
     }
