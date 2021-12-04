@@ -14,21 +14,21 @@
 
         <thead class="text-white">
           <tr>
-            <th scope="col" class="bg-dark">Cyberplate</th>
-            <th scope="col" class="bg-dark">Name</th>
-            <th scope="col" class="bg-dark">Price</th>
-            <th scope="col" class="bg-dark">Quantity</th>
-            <th scope="col" class="bg-dark">Subtotal</th>
+            <th scope="" class="bg-dark">Cyberplate</th>
+            <th scope="" class="bg-dark">Name</th>
+            <th scope="" class="bg-dark">€</th>
+            <th scope="" class="bg-dark">Q</th>
+            <th scope="" class="bg-dark">Sub</th>
           </tr>
         </thead>
 
         {% for cyberplate in bag_items %}
         <tr>
-          <td class="w-25 py-5">
+          <td class=" py-5">
             <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}"
               alt="{{ cyberplate.product.name }}">
           </td>
-          <td class=" py-5 text-white w-25">
+          <td class=" py-5 text-white">
             <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
             <p class="text-white"> {{ cyberplate.product.description }} </p>
           </td>

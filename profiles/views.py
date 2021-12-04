@@ -34,9 +34,9 @@ def profile(request):
 def order_history(request, users_order_number):
     order = get_object_or_404(Order, users_order_number=users_order_number)
 
-    messages.ingo(request, (f'This is a previous order'))
+    messages.info(request, (f'This is a previous order'))
 
-    template ='checkout/checkout_success.html'
+    template ='checkout/order_success.html'
     context = {
         'order': order,
         'from_profile': True,

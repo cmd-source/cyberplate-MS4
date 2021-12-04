@@ -10,10 +10,18 @@
     <div class="row h-100">
         <div class="col card">
             <hr>
+            {% if from_profile %}
+            <h3 class="logo-font">Previous Order Details </h3>
+            {% else %}
             <h3 class="logo-font">Order Complete! </h3>
+            {% endif %}
             <div>
                 <hr>
+                {% if from_profile %}
+                <h5 class="logo-font">You previously ordered this on the {{ order.order_date }}</h5>
+                {% else %}
                 <h5 class="logo-font">Your Order Has Been Complete, details below:</h5>
+                {% endif %}
                 <hr>
                 <br>
                 <h5 class="logo-font">Thanks {{ order.first_name }}</h5>
@@ -83,6 +91,17 @@
                     <h1> <i class="fas fa-radiation-alt mx-auto"></i> </h1>
                     <h1> <i class="fas fa-laptop-code mx-auto"></i> </h1>
                 </div>
+                {% if from_profile %}
+                <p class="text-center mt-5">
+                    <a href="{% url 'products' %}" class="float-left btn bg-dark rounded-3 py-3 ml-2 text-white mt-3"><i
+                      class="fas fa-caret-square-left"></i> All Cyberplates</a>
+                    <a href="{% url 'profile' %}"
+                      class="btn bg-dark float-right rounded-3 py-3 mr-2 text-white mt-3">Back to Profile <i class=" ml-3 fas fa-user"></i></a>
+                  </p>
+                {% else %}
+                <a href="{% url 'products' %}" class="float-left btn bg-dark rounded-3 py-3 ml-2 text-white mt-3"><i
+                    class="fas fa-caret-square-left"></i> All Cyberplates</a>
+                {% endif %}
             </div>
             </div>
         </div>

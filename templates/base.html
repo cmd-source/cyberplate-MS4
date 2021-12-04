@@ -139,7 +139,9 @@
 
   {% block postload_js %}
   <script type="text/javascript">
-    $('.toast').toast('show');
+    $(document).ready(function () {
+      $('.toast').toast('show');
+    });
   </script>
   {% endblock %}
 
