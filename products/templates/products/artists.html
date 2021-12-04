@@ -22,7 +22,10 @@
           <div class="card bg-secondary border-3 mt-3 text-white text-uppercase text-center">
             <img src="{{ MEDIA_URL }}{{ artist.image }}" alt="artist.name">
             <p class="text-center">
-              <a href="#" class="btn bg-dark rounded-3 py-3 text-white mt-3">{{ artist.name }}</a>
+              <a href="{% url 'artist_view' artist.id %}" class="btn bg-dark rounded-3 py-3 text-white mt-3">{{ artist.name }}</a>
+            </p>
+            <p class="text-center">
+              {{ artist.artist_description }}
             </p>
           </div>
         </div>

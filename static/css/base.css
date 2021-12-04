@@ -35,6 +35,31 @@ body {
     }
 }
 
+/* ------------------------------- Artist view */
+
+.artist-img {
+    height: 240px;
+    width: 400px;
+}
+
+.related-work-img{
+    height: 240px;
+    width: 380px;
+}
+
+@media (max-width: 538px) {
+    .artist-img {
+        height: 120px;
+        width: 210px;
+    }
+}
+@media (max-width: 538px) {
+    .related-work-img{
+        height: 120px;
+        width: 260px;
+    }
+
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {

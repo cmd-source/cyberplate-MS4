@@ -15,6 +15,7 @@ class Product_Category(models.Model):
 class Artist(models.Model):
     name = models.CharField(max_length=30)
     display_name = models.CharField(max_length=30)
+    artist_description = models.TextField(max_length=250, null=True, blank=True)
     image_url = models.URLField(null=True, blank=True, max_length=1000)
     image = models.ImageField(null=True, blank=True)
     artist_key = models.IntegerField(null=True, blank=True)
