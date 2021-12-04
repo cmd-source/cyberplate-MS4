@@ -49,7 +49,7 @@ body {
 
 .related-work-img {
     height: 240px;
-    width: 380px;
+    width: 420px;
 }
 
 @media (max-width: 538px) {
@@ -60,7 +60,7 @@ body {
 }
 @media (max-width: 538px) {
     .related-work-img {
-        height: 120px;
+        height: 110px;
         width: 260px;
     }
 

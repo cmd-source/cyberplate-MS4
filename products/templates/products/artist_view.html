@@ -29,7 +29,7 @@
         {% for related_work in artists_products %}
           <div class="card col-8 bg-secondary ml-2 mr-2 mt-3 text-white text-uppercase">
             <h5 class="text-center mt-2 bg-dark slider pt-1">{{ related_work.name }}<i class="css-target fas fa-plus-square fa-minus-square float-right mr-2 mt-1 mb-1 pb-1"></i></h5>
-            <img src="{{ MEDIA_URL }}{{ related_work.image }}" class="related-work-img mx-auto mb-2 img-thumbnail" alt="artist.name">
+            <a href="{% url 'product_view' related_work.id %}" class="mx-auto"><img src="{{ MEDIA_URL }}{{ related_work.image }}" class="related-work-img mx-auto mb-2 img-thumbnail" alt="artist.name"></a>
           </div>
         {% endfor %}
         </div>
@@ -44,8 +44,6 @@
   </div>
 </div>
 
-
-
 {% endblock %}
 
 {% block postload_js %}
@@ -58,7 +56,7 @@
 
     $(".slider").click(function (e) {
         e.preventDefault();
-        $(this).next(".related-work-img").slideToggle('slow');
+        $(this).next("a").children(".related-work-img").slideToggle('slow');
         $(this).children("i").toggleClass("fa-plus-square", 1000);
     });
   
