@@ -40,6 +40,21 @@ body {
     width: 360px;
 }
 
+/* ------------------------------- Shopping bag view */
+
+.img-bag-view {
+    height: 170px;
+    width: 400px;
+}
+
+@media (max-width: 1067px) {
+    .img-bag-view {
+        height: 100px;
+        width: 180px;
+    }
+}
+
+
 /* ------------------------------- Artist view */
 
 .artist-img {
@@ -67,15 +82,20 @@ body {
 
 /* ------------------------------- bootstrap toasts */
 
-.message-container {
+.messages-container {
     position: fixed;
     top: 72px;
-    right: 15px;
+    left: 15px;
+    margin: auto;
     z-index: 99999999999999999;
 }
 
 .custom-toast {
     overflow: visible;
+    position: fixed;
+    left: 15px;
+    margin: auto;
+    top: 72px;
 }
 
 .toast-capper {

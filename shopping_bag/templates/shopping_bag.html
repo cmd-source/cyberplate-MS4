@@ -5,57 +5,80 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container h-100">
-  <div class="overlay"></div>
   <div class="row h-100">
-    <div class="col-sm-12 col-12 my-auto card bg-secondary h-90 rounded reponsive-table">
+    <div class="col-12">
+      <h2 class="logo-font mt-5 text-white bg-dark p-2 rounded-lg">My Cyberplate Shopping Bag</h2>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
       {% if bag_items %}
-      <table class="table table-sm table-borderless">
+        <div class="table-responsive rounded">
+          <table class="table table-sm">
+            <thead class="text-white">
+              <th scope="col">Product</th>
+              <th scope="col"></th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Subtotal</th>
+            </thead>
 
-        <thead class="text-white">
-          <tr>
-            <th scope="" class="bg-dark">Cyberplate</th>
-            <th scope="" class="bg-dark">Name</th>
-            <th scope="" class="bg-dark">€</th>
-            <th scope="" class="bg-dark">Q</th>
-            <th scope="" class="bg-dark">Sub</th>
-          </tr>
-        </thead>
+            {% for cyberplate in bag_items %}
+              <tr>
+                <td>
+                <img class="img-fluid img-bag-view rounded-lg mt-4 mb-2 " src="{{ MEDIA_URL }}{{ cyberplate.product.image }}" alt="{{ cyberplate.product.name }}">
+                </td>
+                <td class=" py-5 text-white">
+                  <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
+                  <p class="text-white"> {{ cyberplate.product.description }} </p>
+                </td>
+                <td class=" py-5 text-white w-20">
+                  <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
+                </td>
+                <td class=" py-5 text-white w-25">
+                  <form class="form update-form" method="POST" action="">
+                    {% csrf_token %}
+                    <div class=" p-3 mx-auto">
+                      <div class="input-group">
+                        <div class="input-group-prepend align-items-center h-25">
+                          <a class="decrement-qty btn bg-info h-50 mr-1 mt-1 rounded-lg"
+                            data-item_id="{{ cyberplate.id }}" id="decrement-qty_{{ cyberplate.id }}">
+                            <span>
+                              <i class="fas fa-minus fa-sm"></i>
+                            </span>
+                          </a>
+                        </div>
+      
+      
+                        <input type="number" name="quantity" value="{{cyberplate.quantity}}" min="1" id="id_qty_{{ cyberplate.id }}"
+                          data-item_id="{{ cyberplate.id }}"
+                          class="form-control mr-auto w-25 text-center mb-5 qty_input rounded-lg">
+      
+      
+                        <div class="input-group-append align-items-center ml-1 h-25">
+                          <a class="increment-qty btn bg-primary h-50 rounded-lg mt-1" data-item_id="{{ cyberplate.id }}"
+                            id="increment-qty_{{ cyberplate.id }}">
+                            <span>
+                              <i class="fas fa-plus fa-sm"></i>
+                            </span>
+                          </a>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </form>
+                </td>
+                <td class=" py-5 text-white">
+                  <p class="text-white"><strong> {{ cyberplate.product.price }} </strong></p>
+                </td>
+              </tr>
+            {% endfor %}
 
-        {% for cyberplate in bag_items %}
-        <tr>
-          <td class=" py-5">
-            <img class="img-bag ml-auto mr-auto" src="{{ MEDIA_URL }}{{ cyberplate.product.image }}"
-              alt="{{ cyberplate.product.name }}">
-          </td>
-          <td class=" py-5 text-white">
-            <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
-            <p class="text-white"> {{ cyberplate.product.description }} </p>
-          </td>
-          <td class=" py-5 text-white">
-            <p class="text-white"><strong>€ {{ cyberplate.product.price }} </strong></p>
-          </td>
-          <td class=" py-5 text-white">
-            <p class="text-white"><strong> {{ cyberplate.quantity }} </strong></p>
-          </td>
-          <td class=" py-5 text-white">
-            <p class="text-white"><strong> {{ cyberplate.product.price }} </strong></p>
-          </td>
-        </tr>
-        {% endfor %}
-        <tr>
-          <td>
-            <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
-                  class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <h2><a href="{% url 'checkout' %}" class="btn btn-success float-right rounded-3 py-3 text-white mt-3">Checkout <i class="fas fa-shopping-cart"></i></a></h2>
-          </td>
-        </tr>
-      </table>
+          </table>
+        </div>
       {% else %}
       <div class="reponsive-table">
         <h3 class="text-white text-center">
@@ -69,6 +92,15 @@
       {% endif %}
     </div>
   </div>
+
+
+
+
 </div>
 
+{% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}
