@@ -54,6 +54,10 @@ body {
     }
 }
 
+.target-bag-color {
+    background-color: RGBA(108, 122, 137,.7);
+}
+
 
 /* ------------------------------- Artist view */
 
@@ -102,9 +106,3 @@ body {
     height: 2px;
 }
 
-/*------ bag -----*/
-
-.img-bag {
-    width: 230px;
-    height: 140px;
-}
