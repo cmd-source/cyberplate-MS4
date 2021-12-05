@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container h-100">
+<div class="container h-75">
     <div class="overlay"></div>
     <div class="row h-100">
         <div class="col card">
@@ -24,11 +24,12 @@
                 {% endif %}
                 <hr>
                 <br>
-                <h5 class="logo-font">Thanks {{ order.first_name }}</h5>
-                <h6 class="logo-font">An email has been sent to {{ order.email }}</h6>
+                <div class="bg-light">
+                <h5 class="logo-font bg-light pt-2 pl-2">Thanks {{ order.first_name }}</h5>
+                <h6 class="logo-font bg-light pt-2 pl-2">An email has been sent to {{ order.email }}</h6>
                 <br>
-                <div class="container-fluid mt-5 justify-content-center">
-                <div class="row">
+                <div class="container-fluid pt-3 pb-3 justify-content-center bg-light border border-primary">
+                <div class="row bg-light">
                     <div class="col-12 col-md-4">
                         <h6>Order Number:</h6>
                     </div>
@@ -37,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row bg-light">
                     <div class="col-12 col-md-4">
                         <h6>First Name:</h6>
                     </div>
@@ -46,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row bg-light ">
                     <div class="col-12 col-md-4">
                         <h6>Last Name:</h6>
                     </div>
@@ -55,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row bg-light">
                     <div class="col-12 col-md-4">
                         <h6>Address:</h6>
                     </div>
@@ -65,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row bg-light">
                     <div class="col-12 col-md-4">
                         <h6>Amount Charged:</h6>
                     </div>
@@ -74,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row bg-light">
                     <div class="col-12 col-md-4">
                         <h6>Date:</h6>
                     </div>
@@ -82,14 +83,15 @@
                         <h6>{{ order.order_date }}</h6>
                     </div> 
                 </div>
+            </div>
                 <br>
                 <br>
                 <br>
                 <div class="row justify-content-between mx-auto">
-                    <h1> <i class="fas fa-user-astronaut mx-auto"></i> </h1>
-                    <h1> <i class="fas fa-atom mx-auto"></i> </h1>
-                    <h1> <i class="fas fa-radiation-alt mx-auto"></i> </h1>
-                    <h1> <i class="fas fa-laptop-code mx-auto"></i> </h1>
+                    <h1> <i class="fas fa-user-astronaut mx-auto text-info"></i> </h1>
+                    <h1> <i class="fas fa-atom mx-auto text-danger"></i> </h1>
+                    <h1> <i class="fas fa-radiation-alt mx-auto text-warning"></i> </h1>
+                    <h1> <i class="fas fa-laptop-code mx-auto text-success"></i> </h1>
                 </div>
                 {% if from_profile %}
                 <p class="text-center mt-5">
