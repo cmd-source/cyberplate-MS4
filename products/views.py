@@ -82,10 +82,43 @@ def artist_view(request, artist_id):
 
 def add_product(request):
 
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'This product has been added to your site!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'This product has not been added to your site!')
+    else:
+        form = ProductForm()
+
     template = 'products/add_product.html'
     context = {
         'form': form
+    }
+
+    return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'This product has been updated on your site!')
+            return redirect(reverse('edit_product', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update this on your site!')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are about to edit {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
     }
 
     return render(request, template, context)
