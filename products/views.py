@@ -44,8 +44,10 @@ def product_view(request, product_id):
     ''' Opens a more detailed view of the Cyberplate selected on'''
     print(f'Product_id from product_view: {product_id}')
     selected_product = get_object_or_404(Product, pk=product_id)
+    all_products = Product.objects.all()
     context = {
-        'selected_product': selected_product
+        'selected_product': selected_product,
+        'all_products': all_products
     }
     # print(product_id)
 

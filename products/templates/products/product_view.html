@@ -20,7 +20,7 @@
         {% csrf_token %}
         <div class="row">
 
-          <div class="card mx-auto bg-secondary border-3 mt-3 mr-2 ml-2">
+          <div class="card mx-auto bg-secondary border-3 mt-3 mr-3 ml-3 w-75 img-thumbnail">
             <h3 class="text-center text-white mt-1">{{ selected_product.name }}</h3>
             <br>
             <img class="mr-2 ml-2" src="{{ MEDIA_URL }}{{ selected_product.image }}" alt="cyberplate.name">
@@ -69,11 +69,25 @@
               </div>
           </div>
         </div>
-        <div class="row">
-          <h4 class="logo-font text-center mt-3">Similar To This</h4>
-          <div class="col-6-md">
+        <br>
+        <h4 class=" text-center mt-3">Similar To {{ selected_product.name }}</h4>
+        <div class="row d-flex justify-content-center border border-primary mr-3 ml-3 mb-5 rounded">
+
             
+            {% for similar in all_products %}
+            {% if selected_product.artist == similar.artist %}
+            <div class="col-lg-4 col-sm-12 col-md-6 card bg-secondary mt-3 text-white text-uppercase mr-1 ml-1 image__img">
+              <h5 class="text-center mt-2 bg-dark pt-1">{{ similar.name }}</h5>
+              <a href="{% url 'product_view' similar.id %}" class="mx-auto"><img src="{{ MEDIA_URL }}{{ similar.image }}" class="image__overlay image__overlay--primary similar mx-auto mb-2 img-thumbnail" alt="artist.name"></a>
+              <div class="image__title text-center">{{ similar.name }}</div>
+              <div class="image__description text-center">{{ similar.description }}</div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+
           </div>
+          <div class="col-6-md text-center"></div>
         </div>
       </form>
     </div>
@@ -85,4 +99,19 @@
 {% block postload_js %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+
+  $(".similar").hover(function () {
+      $(this).css("box-shadow", "0 0 25px rgb(49, 46, 46)")
+      $( this ).addClass( "hover" )
+  },function () {
+    $(this).css("box-shadow", "none");
+    $(this).toggle().css({"opacity": "1"});
+  });
+  })
+</script>
+
+
 {% endblock %}
