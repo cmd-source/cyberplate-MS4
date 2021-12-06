@@ -87,7 +87,7 @@ def add_product(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'This product has been added to your site!')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('products'))
         else:
             messages.error(request, 'This product has not been added to your site!')
     else:
@@ -122,3 +122,10 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, f'{product.name} has been successfully deleted!')
+    return redirect(reverse('products'))
