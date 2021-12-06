@@ -67,18 +67,20 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'artists' %}">Artists</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Collections
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'products' %}?category_selected=1">Space</a>
-            <a class="dropdown-item" href="{% url 'products' %}?category_selected=2">Cryptocurrency</a>
-            <a class="dropdown-item" href="{% url 'products' %}?category_selected=3">Nature</a>
-            <a class="dropdown-item" href="{% url 'products' %}?category_selected=4">Games</a>
-          </div>
+        <div class="d-flex">
+        <li class="nav-item ml-3">
+          <a class="nav nav-link" href="{% url 'products' %}?category_selected=1">Space</a>
         </li>
+        <li class="nav-item ml-1">
+          <a class="nav nav-link" href="{% url 'products' %}?category_selected=2">Cryptocurrency</a>
+        </li>
+        <li class="nav-item ml-1">
+          <a class="nav nav-link" href="{% url 'products' %}?category_selected=3">Nature</a>
+        </li>
+        <li class="nav-item ml-1">
+          <a class="nav nav-link" href="{% url 'products' %}?category_selected=4">Games</a>
+        </li>
+        </div>
 
       </ul>
       <form class="form-inline my-2 my-lg-0 ml-auto" method="GET" action="{% url 'products' %}">
@@ -87,8 +89,27 @@
       </form>
 
       <!-- Taken from CI walkthrough project Boutique Ado -->
+
+      <li class="nav-item nav nav-link dropdown">
+        <a class="nav-link nav dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">User<i class=" ml-3 fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'add_product' %}"><h4><i class="ml-3 fab fa-uncharted mr-1"></i> </h4> Add</a>
+              {% endif %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'profile' %}"><h4> <i class=" ml-3 fas fa-user mr-1"></i> </h4> My Profile</a>
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_logout' %}"><h4> <i class=" ml-3 fas fa-sign-out-alt mr-1"></i> </h4>Logout</a>
+          {% else %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_signup' %}"><h4><i class="ml-3 fas fa-user-plus mr-1"></i> </h4>Register</a>
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_login' %}"><h4> <i class="ml-3 fas fa-sign-in-alt mr-1"></i> </h4> Login</a>
+          {% endif %}
+        </div>
+      </li>
+
       <a href="{% url 'shopping_bag' %}">
-        <p class="my-1 ml-4">
+        <p class="my-1 ml-1 mr-2">
           {% if grand_total %}
           €{{ grand_total|floatformat:2 }}
           <i class="fas fa-shopping-bag"></i>
@@ -99,9 +120,6 @@
           </div>
           {% endif %}
         </p>
-      </a>
-      <a href="{% url 'profile' %}">
-        <h4><i class=" ml-3 fas fa-user"></i></h4>
       </a>
 
   </nav>
