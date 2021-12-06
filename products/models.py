@@ -12,6 +12,7 @@ class Product_Category(models.Model):
         return self.display_name
 
 
+
 class Artist(models.Model):
     name = models.CharField(max_length=30)
     display_name = models.CharField(max_length=30)
@@ -35,4 +36,7 @@ class Product(models.Model):
     product_key = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
         return self.name

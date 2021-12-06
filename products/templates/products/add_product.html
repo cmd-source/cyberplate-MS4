@@ -12,11 +12,11 @@
             <hr>
             <h3 class="logo-font">Product Management </h3>
             <div class="row">
-                <hr>
-                <div class="col-12 col-md-6">
+                <div class="col-12">
+                    <h6 class="logo-font">Add a Product</h6>
                     <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                         {% csrf_token %}
-
+                        {{ form | crispy }}
                     </form>
                 </div>
             </div>

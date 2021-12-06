@@ -8,14 +8,16 @@ class ProductForm(forms.ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args,**kwargs)
+        super().__init__(*args, **kwargs)
 
-        categories = Product_Category.objects.all()
-        #friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
-
-        #self.fields['category'].choices = friendly_names
-
-        creator = Artist.objects.all()
-        #creator_friendly_names = [(a.id, a.get_friendly_name()) for a in creator]
-
-        
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'product_category': 'product_category',
+            'artist': 'artist',
+            'name': 'name',
+            'description': 'description',
+            'price': 'price',
+            'image_url': 'image_url',
+            'image': 'image',
+            'product_key': 'product_key',
+            }
