@@ -77,30 +77,24 @@ body {
         width: 210px;
     }
 }
-@media (max-width: 538px) {
-    .related-work-img {
-        height: 110px;
-        width: 260px;
-    }
-
 
 /* ------------------------------- bootstrap toasts */
 
 .messages-container {
-    position: fixed;
     top: 72px;
     left: 15px;
     margin: auto;
-    z-index: 99999999999999999;
 }
 
 .custom-toast {
     overflow: visible;
     position: fixed;
-    left: 15px;
+    right: 15px;
     margin: auto;
     top: 72px;
+    z-index: 999999999999999999
 }
+
 
 .toast-capper {
     height: 2px;

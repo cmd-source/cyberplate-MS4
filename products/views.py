@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Artist, Product_Category
 from .forms import ProductForm
-
+#The idea for useing user_passes_test was taken from https://stackoverflow.com/questions/12003736/django-login-required-decorator-for-a-superuser
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
  
@@ -63,7 +64,6 @@ def artists(request):
     return render(request, 'products/artists.html', context)
 
 
-
 def artist_view(request, artist_id):
     '''Opens a more detailed view of the Cyberplate selected on'''
     selected_artist = get_object_or_404(Artist, pk=artist_id)
@@ -79,7 +79,8 @@ def artist_view(request, artist_id):
     return render(request, 'products/artist_view.html', context)
 
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def add_product(request):
 
     if request.method == 'POST':
@@ -100,7 +101,8 @@ def add_product(request):
 
     return render(request, template, context)
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -123,7 +125,8 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
