@@ -17,3 +17,5 @@ class ProductForm(forms.ModelForm):
 
         creator = Artist.objects.all()
         #creator_friendly_names = [(a.id, a.get_friendly_name()) for a in creator]
+
+        
