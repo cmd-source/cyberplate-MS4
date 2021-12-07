@@ -77,10 +77,9 @@
             {% for similar in all_products %}
             {% if selected_product.artist == similar.artist %}
             <div class="col-lg-4 col-sm-12 col-md-6 card bg-secondary mt-3 text-white text-uppercase mr-1 ml-1 image__img">
-              <h5 class="text-center mt-2 bg-dark pt-1">{{ similar.name }}</h5>
+              <h5 class="text-center mt-2 bg-dark pt-1 rounded">{{ similar.name }}</h5>
               <a href="{% url 'product_view' similar.id %}" class="mx-auto"><img src="{{ MEDIA_URL }}{{ similar.image }}" class="image__overlay image__overlay--primary similar mx-auto mb-2 img-thumbnail" alt="artist.name"></a>
-              <div class="image__title text-center">{{ similar.name }}</div>
-              <div class="image__description text-center">{{ similar.description }}</div>
+              <div class="image__description text-center">{{ similar.description | lower }}</div>
             </div>
             {% endif %}
             {% endfor %}
@@ -104,11 +103,11 @@
   $(document).ready(function(){
 
   $(".similar").hover(function () {
-      $(this).css("box-shadow", "0 0 25px rgb(49, 46, 46)")
-      $( this ).addClass( "hover" )
+      $(this).css("box-shadow", "0 0 25px rgb(49, 46, 46)");
+      $(this).css({"opacity": ".2"});
   },function () {
     $(this).css("box-shadow", "none");
-    $(this).toggle().css({"opacity": "1"});
+    $(this).css({"opacity": "1"});
   });
   })
 </script>

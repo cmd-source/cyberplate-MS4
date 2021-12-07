@@ -100,7 +100,7 @@ body {
     height: 2px;
 }
 
-/* ------------------------------- Product related images taken from https://www.youtube.com/watch?v=exb2ab72Xhs */
+/* -------------------------------Some of this code was taken from https://www.youtube.com/watch?v=exb2ab72Xhs */
 
 .image {
     position: relative;
@@ -110,16 +110,17 @@ body {
 .image__img {
     display: block;
     width: 100%;
-    height: 300px;
+    height: 280px;
+    margin-bottom: 10px;
 }
 
 .image__overlay {
     position: absolute;
     top: 0;
     left: 0;
+    margin-bottom: 10px;
     width: 100%;
-    height: 300px;
-    background: rgba(0, 0, 0, 0.6);
+    height: 280px;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -128,7 +129,7 @@ body {
     transition: opacity 0.25s;
 }
 
-.image__title {
-    margin-top: 75px;
+.image__description {
+    font-size: 1.1rem;
+    margin-top: 70px;
 }
-
