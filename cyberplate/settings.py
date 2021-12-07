@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-isuy2j&j1$k1_o=wbtyvd3*+e^wa9_vr-(7y*=@__+a=b##_b@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cyberplate-ms4.herokuapp.com, localhost']
+ALLOWED_HOSTS = ['cyberplate-ms4.herokuapp.com', 'localhost']
 
 
 # Application definition
