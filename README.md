@@ -49,13 +49,43 @@ The five planes of UX were kept in mind from the beginning of the design to the 
 
 
 #### Design
-The overall theme of the website is an luminous background that was chosen to give a sense of awe to an external user for when they come to land on the website.
+The overall theme of the website is a visually captivating one. When the user first lands on the site there is a very obvious navigation menu with profile information in the top right. From the homepage there is a very clear direction for the user. Either they can go straight to "SHOP NOW" or if they do not have an account they can first "Sign Up" or login.
 
-#### Design
+Once the user is in they are directed to the products page and from here they are very easily able to search for certain keywords, browse the products by collection or artist. Once they land one a artist they or product they will be able to see related work to the artist/product which gives for a better user experience.
+
+On viewing a single product the user with be able to see the name, artist, description and the related work to that product is placed under that piece. A primary button in the center will be highlighted to the user to prompt them to add it to their bag. The related products underneath viewing a single product will when hovered over with a mouse display the name and description to the user of that related product. They will then be directed to that products view if they click on it.
+
+On the Artist page users will see four main artists. When a user clicks on an artist they will be directed to their page and a list of that artists creations will be underneath the artists description. These creations will expand to be viewed when clicked upon. Then when a user clicks on the image of that creation they will be directed to that product view where they can add it to their bag.
+
+When a user is satisfied with their selection they may navigate to view thier bag before checkout either from the products view page or from the top right hand corner in the navigation bar. When viewing their bag items they will be able to edit or delete these items before proceeding to the final checkout page.
+
+On the checkout page users will enter their billing and card details. Here the form will ensure valid form data and Stripe will ensure valid card details. Once complete the user will be taken to an order summery page where they may view the details of this order.
+
+Users have a profile page from which they can update their personal information and view previous orders.
+
+Finally throughout the site boostrap toast messages will appear when certain actions are taken such as adding products to the bag, updating information or with errors that occur to allow the user to know when certain actions have benn taken.
+
 #### Styling
+For the styling of this site Roboto font was used throughout as it have the correct feel for this graphic design site. Font Awesome Icons were used throughout as they gave a familiar website user expeience.
+
 #### Images
+All the images and graphic pieces for this website were chosen because they were so visually appealing which is what is likely to draw users in and hold their attention when they land on it. Logos for the artists were created online at Tailor Brands and were made with a modern experince in mind.
 
 # Features
+There are many features incorporated in this website taken from what I have learnt previously and in this module. They include:
+
+- A navigation menu that collapses on mobile with a searchbar.
+- A responsive website across all devices.
+- Carousel of images on the homepage that rotate.
+- Javascript that allows for increasing/decreasing a products quantity before adding to the bag.
+- JQueary that provides a hover effect over related products, displaying the name and description.
+- JQueary that provides an accordion effect for products on the Artists page expanding and collapsing them.
+- JQueary that provides an update/delete option on the users bag.
+- Boostrap toasts give feedback to the user on certain actions or errors made.
+- Stripe allows for secure transactions to be made along with their webhooks which ensure orders are created successfully.
+- A profile page gives users the ability to see their previos orders and their information.
+- Confirmation emails are sent to users for registration and orders.
+
 
 # Technologies Used
 
@@ -65,15 +95,17 @@ The overall theme of the website is an luminous background that was chosen to gi
 
 - Font awesome
 
-- JQuery
+- Javascript/JQuery
+
+- Stripe for payments
 
 - Django/Python3 for the backend
 
-- AWS as a databasee
+- AWS to store static files 
 
 - Django as a web framework
 
-- Heroku and Github for deployment
+- Heroku as a backend and Github as a repository
 
 # Testing
 
