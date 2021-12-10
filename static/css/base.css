@@ -58,6 +58,10 @@ body {
     background-color: RGBA(108, 122, 137,.7);
 }
 
+.target-bag-sm {
+    justify-content: center!important;
+}
+
 
 /* ------------------------------- Artist view */
 

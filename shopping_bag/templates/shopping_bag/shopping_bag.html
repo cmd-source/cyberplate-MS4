@@ -17,8 +17,35 @@
 
     <div class="row">
       <div class="col-12">
-      {% if bag_items %}
-        <div class="table-responsive rounded target-bag-color">
+        {% if bag_items %}
+        <div class="d-block d-md-none">
+          <div class="row">
+            <div class="col">
+              <p class="text-white text-center"> Your order summery is below: </p>
+              <div class="col d-flex justify-content-between">
+                {% include "shopping_bag/checkout-button.html" %}
+              </div>
+            </div>
+          </div>
+          <br>
+          {% for cyberplate in bag_items %}
+          <div class="row target-bag-color target-bag-sm rounded">
+            <div class="container center">
+            <div class="col-12 text-center">{% include "shopping_bag/image.html" %}</div>
+            <div class="col-12 text-center">{% include "shopping_bag/info.html" %}</div>
+            <div class="col-12 text-center">
+              <p class="text-white mt-4"><strong>€{{ cyberplate.product.price }} </strong></p>
+              <p class="text-white mt-4"><strong>Subtotal €{{ cyberplate.product.price | calc_sub:cyberplate.quantity }} </strong></p>
+            </div>
+            <div class="col-12 col-m-6 ">
+              <div class="col-12 ">{% include "shopping_bag/quantity.html" %}</div>
+            </div>
+            <div class="col-12"><hr></div>
+          </div>
+        </div>
+          {% endfor %}
+        </div>
+        <div class="table-responsive rounded target-bag-color d-none d-md-block">
           <table class="table table-sm">
             <thead class="text-white">
               <th scope="col">Product</th>
@@ -29,18 +56,25 @@
             </thead>
 
             {% for cyberplate in bag_items %}
-              <tr>
-                <td>
+            <tr>
+              <td>
+                <!--
                 <img class="img-fluid img-bag-view rounded-lg mt-4 mb-2 " src="{{ MEDIA_URL }}{{ cyberplate.product.image }}" alt="{{ cyberplate.product.name }}">
-                </td>
-                <td class=" py-5 text-white">
+                  -->
+                {% include "shopping_bag/image.html" %}
+              </td>
+              <td class=" py-5 text-white">
+                <!--
                   <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
                   <p class="text-white"> {{ cyberplate.product.description }} </p>
-                </td>
-                <td class=" py-5 text-white w-20">
-                  <p class="text-white mt-4"><strong>€{{ cyberplate.product.price }} </strong></p>
-                </td>
-                <td class=" py-5 text-white w-25">
+                  -->
+                {% include "shopping_bag/info.html" %}
+              </td>
+              <td class=" py-5 text-white w-20">
+                <p class="text-white mt-4"><strong>€{{ cyberplate.product.price }} </strong></p>
+              </td>
+              <td class=" py-5 text-white w-25">
+                <!--
                   <form class="form update-form" method="POST" action="{% url 'adjust_bag' cyberplate.item_id %}">
                     {% csrf_token %}
                     <div class=" p-3 mx-auto rounded">
@@ -74,69 +108,77 @@
                   </form>
                   <a class="update-link text-info btn bg-dark rounded text-success"><small>Update</small></a>
                   <a class="remove-item text-danger float-right btn bg-dark rounded" id="remove_{{ cyberplate.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                -->
+                {% include "shopping_bag/quantity.html" %}
 
-                </td>
-                <td class=" py-5 text-white">
-                  <p class="text-white mt-4"><strong> €{{ cyberplate.product.price | calc_sub:cyberplate.quantity }} </strong></p>
-                </td>
-              </tr>
+              </td>
+              <td class=" py-5 text-white">
+                <p class="text-white mt-4"><strong> €{{ cyberplate.product.price | calc_sub:cyberplate.quantity }}
+                  </strong></p>
+              </td>
+            </tr>
 
-              
+
             {% endfor %}
 
           </table>
           <div class="d-flex justify-content-around mb-2">
-            <a href="{% url 'products' %}" class="float-left btn bg-dark rounded py-3 ml-2 text-white mt-3"><i
+            <!--<a href="{% url 'products' %}" class="float-left btn bg-dark rounded py-3 ml-2 text-white mt-3"><i
                 class="fas fa-caret-square-left"></i> Cyberplates</a>
             <a href="{% url 'checkout' %}"
               class="btn btn-success float-right rounded py-3 mr-2 text-white mt-3">Checkout <i
                 class="fas fa-shopping-cart"></i></a>
-            </div>
+            
+            {% include "shopping_bag/checkout-button.html" %} -->
+          </div>
         </div>
-      {% else %}
-      <div class="reponsive-table">
-        <h3 class="text-white text-center">
-          There is nothing in your shopping bag. Return to Cyberplates
-        </h3>
-        <p class="text-center mx-auto ml-5">
-          <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
-                class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
-        </p>
+        {% else %}
+        <div class="reponsive-table">
+          <h3 class="text-white text-center">
+            There is nothing in your shopping bag. Return to Cyberplates
+          </h3>
+          <p class="text-center mx-auto ml-5">
+            <h2><a href="{% url 'products' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
+                  class="fas fa-caret-square-left"></i> All Cyberplates</a></h2>
+          </p>
+        </div>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
+
+
+
+
   </div>
 
+  {% endblock %}
 
+  {% block postload_js %}
+  {{ block.super }}
+  {% include 'products/includes/quantity_input_script.html' %}
 
-
-</div>
-
-{% endblock %}
-
-{% block postload_js %}
-{{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-  // Update quantity on click
-  $('.update-link').click(function(e) {
+  <script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function (e) {
       var form = $(this).prev('.update-form');
       form.submit();
-  })
+    })
 
-  // Remove item and reload on click
-  $('.remove-item').click(function(e) {
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
       var csrfToken = "{{ csrf_token }}";
       var itemId = $(this).attr('id').split('remove_')[1];
       var size = $(this).data('product_size');
       var url = `/shopping_bag/remove/${itemId}/`;
-      var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+      var data = {
+        'csrfmiddlewaretoken': csrfToken,
+        'product_size': size
+      };
 
       $.post(url, data)
-       .done(function() {
-           location.reload();
-       });
-  })
-</script>
-{% endblock %}
+        .done(function () {
+          location.reload();
+        });
+    })
+  </script>
+  {% endblock %}

@@ -8,8 +8,7 @@ from django.contrib import messages
 
 def shopping_bag(request):
     ''' A view to return the users shopping bag page'''
-    print("look here settings.FREE_DELIVERY_THRESHOLD> ", settings.FREE_DELIVERY_THRESHOLD)
-    return render(request, 'shopping_bag.html')
+    return render(request, 'shopping_bag/shopping_bag.html')
 
 
 def add_product_to_bag(request, item_id):
