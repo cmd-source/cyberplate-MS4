@@ -22,9 +22,10 @@
 
     - To be able to then purchase a design once I find the one Im looking for.
 
+    - To be able to easily update/delete items in my shopping bag before making a payment
+
     - To be able to see previous orders that I made as a user
 
-    - To be able to easily update/delete items in my shopping bag before making a payment
 
 - As an Internal user I want the following:
 
@@ -32,9 +33,12 @@
 
     - To have a website that is easy to navigate.
 
-    - To have a website that always users to easily place an order which I can recieve payments from.
+    - To have a website that allows users to easily place an order which I can recieve payments from.
 
     - To be able to see the orders made by external users ordering from the website.
+
+    - To be able to add/edit/delete and update products on the website.
+
 
 
 #### Wireframes
@@ -113,9 +117,94 @@ There are many features incorporated in this website taken from what I have lear
 
 # Testing 
 
-### User Stories:
+## User Stories:
 
-1 To be able to navigate the website easily to find the graphic designs Im interest in.
+### Internal User
+
+1 To be able to navigate the website easily to find the graphic designs Im interest in:
+
+    - From the homepage a user has a navbar to take the across the website.
+    - They are presented with a "SHOP NOW" button which will take them to all the products.
+
+![home](media/home.PNG)
+![product](media/product.PNG)
+
+2 To be able to make searches that will generally search the products Im looking for:
+
+ - Users have a searchbar to allow them to make searches on available products.
+ - Users have collections which they can click to get a certain theme.
+ - Users have artists which they can click to get that artists work. Expanding and collapsing their work upon clicking.
+
+![searchbar](media/searchbar.PNG)
+![collection](media/collection.PNG)
+![artists](media/artists.PNG)
+![relatedart](media/relatedart.PNG)
+
+3 To be able to then purchase a design once I find the one Im looking for:
+
+   - Users have a payment form which will submit using Stripe to handle payments.
+   - Users will then be directed to a payment success page showing their otrder details.
+
+![payment](media/paymentform.PNG)
+![order](media/previous_order.PNG)
+
+4 To be able to easily update/delete items in my shopping bag before making a payment:
+
+    - Users will be able to update/delete items before checkout.
+
+![order](media/update.PNG)
+
+5 To be able to see previous orders that I made as a user:
+
+    - Users must first login or register before they can see previous order information.
+    - Once logged in they have a profile page with biling details and previous orders.
+    - Upon clicking an order ID the user will see the details of that particular order.
+
+![user](media/user.PNG)
+![userprofile](media/user_profile.PNG)
+![previous_order](media/previous_order.PNG)
+
+### External User
+
+1 To have a visually apealling website that draws users in once they land on the homepage:
+
+    - This website it visually captivating, with a very rich background image and product images used to provide a positive user experience.
+    - The hompage maximizes on the visuals by keeping product content on the left so that the planet on the right isnt covered up.
+    - A carousel underneath rotates through similar products to make use of the space and peak an external users interest further.
+
+![visual](media/visual.PNG)
+
+2 To have a website that is easy to navigate:
+
+    - This website gives a user the ability to search by text, by Artist or by collection all in the narbar.
+    - When users are on a certain product they will be shown similar products underneath which are clickable and direct the user, this provides easy navigation.
+    - When users are on a certain artist they will be able to see the works by this artist which expand and are clickable, this provides easy navigation.
+
+![searching](media/searching.PNG)
+![similar](media/similar.PNG)
+![imageclick](media/imageclick.PNG)
+
+3 To have a website that allows users to easily place an order which I can recieve payments from:
+
+    - External users can place orders through the Stripe elements on the payments form. 
+
+![payment](media/paymentform.PNG)
+
+4 To be able to see the orders made by external users ordering from the website:
+
+    - Internal users will be able to see the orders coming in from users by Stripe and its webhooks which will ensure orders are created.
+
+![stripe](media/payment_order.PNG)
+
+
+5 To be able to add/edit/delete and update products on the website:
+
+    - Only site owners have the ability to add/edit/delete and update products from sign in.
+
+![CRUD](media/crud.PNG)
+![Edit](media/edit.PNG)
+![Add](media/addproduct.PNG)
+
 
 credts:
 
