@@ -200,13 +200,52 @@ There are many features incorporated in this website taken from what I have lear
 5 To be able to add/edit/delete and update products on the website:
 
     - Only site owners have the ability to add/edit/delete and update products from sign in.
+    - Delete/Edit buttons will show for the superuser and an Add option in the top right and corner under user
 
 ![CRUD](media/crud.PNG)
 ![Edit](media/edit.PNG)
 ![Add](media/addproduct.PNG)
+![delete](media/delete.PNG)
 
+## Devices Tested:
 
-credts:
+ - 24 inche dell monitor
+ - 16 inche lenovo laptop
+ - Galaxy S5
+ - Pixel 2
+ - iPhone 6/7 & 8
+ - iPhone X
+ - iPad
+ - Galaxy Fold
+
+## Known Bugs and Issues:
+
+- Currently adding products does allow to go negative but will not submit so it isnt seen as a critical issue 
+![minus](media/minus.PNG)
+
+- Currently the bag view shows a slight amount of space to the right on a medium device. As this has greatly been improved upon already and isnt critical it is something to be improved on in the future.
+![space](media/space.PNG)
+
+- There is a brief moment when going from a large to small device that the nav-bar displays slightly off design. As this is non critical and only appears for a span of about 200 pixals it will be improved upon in future.
+![nav](media/nav.PNG)
+
+- I have noticed that on the live deployment sometimes AWS will undo the permissions that I have granted for access to all, I am not sure as to why this is. As of writing this README permission are granted and screenshots provided below
+
+![access1](media/access1.PNG)
+![access2](media/access2.PNG)
+![access3](media/access3.PNG)
+
+## Data Schema
+
+For this project I created my own data, everything was added manually and the credits for the product images are referenced below in the credits. The database is in Heroku Postgres. The relationships between the data stored here can be seen in the schema below which was created using dbdesigner which is credited below
+
+![Schema](media/Schema.PNG)
+
+## Validators
+
+# Deployment
+
+credits:
 
  Images Used:
 - https://www.maxpixel.net/Planet-Fantasy-Wallpaper-Galaxy-Bus-Space-Eclipse-4838313
@@ -230,6 +269,7 @@ Rescources that provided me with help:
 - https://stackoverflow.com/questions/43544366/anonymoususer-object-is-not-iterable-django
 - https://www.w3schools.com/bootstrap4/bootstrap_carousel.asp
 - https://stackoverflow.com/questions/833032/submit-is-not-a-function-error-in-javascript
+- https://app.dbdesigner.net/
 
 
 Acknowledgements:
