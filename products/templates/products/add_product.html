@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-12">
                     <h6 class="logo-font">Add a Product</h6>
-                    <form action="{% url 'add_product' %}" method="POST" id="payment-form">
+                    <form action="{% url 'add_product' %}" method="POST" enctype="multipart/form-data"">
                         {% csrf_token %}
                         {{ form | crispy }}
                     <a class="btn bg-dark rounded text-danger" href="{% url 'products'  %}">Cancel</a>
