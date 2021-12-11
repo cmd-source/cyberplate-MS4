@@ -17,7 +17,7 @@
                     <form action="{% url 'add_product' %}" method="POST" id="payment-form">
                         {% csrf_token %}
                         {{ form | crispy }}
-                    <a class="btn bg-dark rounded text-danger" href="{% url 'products' %}">Cancel</a>
+                    <a class="btn bg-dark rounded text-danger" href="{% url 'products'  %}">Cancel</a>
                         <button class="btn bg-dark rounded text-success float-right" type="submit">Add Product</button>
                     </form>
                 </div>
