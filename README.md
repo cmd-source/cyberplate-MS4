@@ -24,6 +24,8 @@
 
     - To be able to see previous orders that I made as a user
 
+    - To be able to easily update/delete items in my shopping bag before making a payment
+
 - As an Internal user I want the following:
 
     - To have a visually apealling website that draws users in once they land on the homepage.
@@ -37,7 +39,9 @@
 
 #### Wireframes
 
-The five planes of UX were kept in mind from the beginning of the design to the end. The wireframes for this project were a very basic starting place for me to lay the foundation of the website. Many other screens were quickly added such as login/sign-up/confirm email/ but these views come with the Django framework. Some other screens that did not come with the framework and that were not create at the beginning in the wireframes were the checkout view and custom 404 page.
+The five planes Strategy, Scope, Structure, Skeleton and Surface of UX were kept in mind from the beginning of the design to the end. Starting with an abstract concept of giving external users an effortless way to purchase stunning artwork from internal users looking for an effective way to deliver this, the end result was this Cyberplate website.
+
+The wireframes for this project were a very basic starting place for me to lay the foundation of the website. Other screens were added such as login/sign-up/confirm email/ but these views come with the Django framework and are such a standard part of a website that I didnt include them in the wireframes. Some other screens that did not come with the framework and that were not created at the beginning in the wireframes were the checkout view, product, artist view and custom 404 page.
 
 ![Homepage](media/Homepage.PNG)
 
@@ -107,10 +111,15 @@ There are many features incorporated in this website taken from what I have lear
 
 - Heroku as a backend and Github as a repository
 
-# Testing
+# Testing 
+
+### User Stories:
+
+1 To be able to navigate the website easily to find the graphic designs Im interest in.
 
 credts:
 
+ Images Used:
 - https://www.maxpixel.net/Planet-Fantasy-Wallpaper-Galaxy-Bus-Space-Eclipse-4838313
 - https://wallpaperaccess.com/gaming
 - https://www.maxpixel.net/Landscape-Nature-Wallpaper-For-Girls-Tree-4032192
@@ -122,7 +131,17 @@ credts:
 - https://wallpaperaccess.com/hd-nature
 - https://wall.alphacoders.com/big.php?i=1135135
 
+Rescources that provided me with help:
 - https://www.w3schools.com/bootstrap4/bootstrap_flex.asp
 - https://stackoverflow.com/questions/43544366/anonymoususer-object-is-not-iterable-django
 - https://stackoverflow.com/questions/833032/submit-is-not-a-function-error-in-javascript
+- https://api.jqueryui.com/toggleclass/
+- https://stackoverflow.com/questions/12003736/django-login-required-decorator-for-a-superuser
+- https://docs.djangoproject.com/en/dev/ref/templates/builtins/#built-in-filter-reference
+- https://stackoverflow.com/questions/43544366/anonymoususer-object-is-not-iterable-django
+- https://www.w3schools.com/bootstrap4/bootstrap_carousel.asp
+- https://stackoverflow.com/questions/833032/submit-is-not-a-function-error-in-javascript
 
+
+Acknowledgements:
+The inspiration for this project came from the website Displate https://displate.com/ 
