@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- base template was largely influenced by CI walkthrough project Boutique Ado -->
+  <!-- base template was largely influenced by CI walkthrough project Boutique Ado and is used to extend to other templates -->
 
   {% block meta %}
   <meta charset="utf-8">
@@ -28,6 +28,7 @@
   {% block extra_css %}
   {% endblock %}
 
+  <!-- Stripe/JQuery and Bootsrap Javascript -->
   {% block corejs %}
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -136,8 +137,6 @@
     {% with message.level as level %}
     {% if level == 40 %}
     {% include 'includes/toasts/toast_error.html' %}
-    {% elif level == 30 %}
-    {% include 'includes/toasts/toast_warning.html' %}
     {% elif level == 25 %}
     {% include 'includes/toasts/toast_success.html' %}
     {% else %}
