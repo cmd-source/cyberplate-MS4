@@ -45,7 +45,7 @@
                             <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
                             <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                         {% else %}
-                            <label class="form-check-label" for="id-save-info">
+                            <label class="form-check-label">
                                 <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
                                 <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
                             </label>
@@ -55,8 +55,8 @@
                     <fieldset>
                         <h2><a href="{% url 'shopping_bag' %}" class="btn bg-dark rounded-3 py-3 text-white mt-3"><i
                                     class="fas fa-caret-square-left"></i> Back to adjust bag</a>
-                            <button href="#" class="btn float-right bg-dark rounded-3 py-3 text-white mt-3"
-                                id="btnSubmit">Complete Order <i class="fas fa-lock"></i></i>
+                            <button class="btn float-right bg-dark rounded-3 py-3 text-white mt-3"
+                                id="btnSubmit">Complete Order <i class="fas fa-lock"></i>
                             </button>
 
                         </h2>
@@ -69,7 +69,6 @@
         </div>
 
     </div>
-</div>
 </div>
 {% endblock %}
 
