@@ -3,11 +3,14 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Artist, Product_Category
 from .forms import ProductForm
-#The idea for useing user_passes_test was taken from https://stackoverflow.com/questions/12003736/django-login-required-decorator-for-a-superuser
+'''
+The idea for useing user_passes_test was taken from
+https://stackoverflow.com/questions/12003736/django-login-required-decorator-for-a-superuser
+'''
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
- 
+
 
 def products(request):
     ''' A view to return the products page'''
@@ -28,7 +31,8 @@ def products(request):
                 messages.error(request, 'This is not a vaild search')
                 return redirect(reverse('products'))
 
-            searched_query = Q(name__icontains=search) | Q(description__icontains=search) 
+            searched_query = Q(name__icontains=search
+                               ) | Q(description__icontains=search)
             all_products = all_products.filter(searched_query)
 
     context = {
@@ -69,9 +73,9 @@ def artists(request):
 def artist_view(request, artist_id):
     '''Opens a more detailed view of the Cyberplate selected on'''
     selected_artist = get_object_or_404(Artist, pk=artist_id)
-    print('selected_artist >>',selected_artist.image)
+    print('selected_artist >>', selected_artist.image)
     artists_products = Product.objects.all().filter(artist=selected_artist)
-    print('artists_products >>',artists_products)
+    print('artists_products >>', artists_products)
 
     context = {
         'selected_artist': selected_artist,
@@ -89,10 +93,12 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'This product has been added to your site!')
+            messages.success(request,
+                             'This product has been added to your site!')
             return redirect(reverse('products'))
         else:
-            messages.error(request, 'This product has not been added to your site!')
+            messages.error(request,
+                           'This product has not been added to your site!')
     else:
         form = ProductForm()
 
@@ -103,6 +109,7 @@ def add_product(request):
 
     return render(request, template, context)
 
+
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def edit_product(request, product_id):
@@ -111,7 +118,8 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'This product has been updated on your site!')
+            messages.success(request,
+                             'This product has been updated on your site!')
             return redirect(reverse('edit_product', args=[product.id]))
         else:
             messages.error(request, 'Failed to update this on your site!')
@@ -126,6 +134,7 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
