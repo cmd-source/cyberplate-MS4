@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import Order,OrderItem
+from .models import Order, OrderItem
 from products.models import Product
 
 import json
@@ -44,9 +44,9 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(
                     first_name__iexact=shipping_details.name,
-                    street__iexact = shipping_details.address.line1,
-                    town__iexact = shipping_details.address.city,
-                    original_bag =bag,
+                    street__iexact=shipping_details.address.line1,
+                    town__iexact=shipping_details.address.city,
+                    original_bag=bag,
                     stripe_pid=pid,
                 )
                 order_exits = True
@@ -57,7 +57,8 @@ class StripeWH_Handler:
         if order_exists:
             print('The order exists >> ', order_exists)
             return HttpResponse(
-                content=f'The payment has succeeded webhook received: {event["type"]}| Success order in database',
+                content=f'The payment has succeeded webhook received:
+                {event["type"]} | Success order in database',
                 status=200)
         else:
             order = None
@@ -65,8 +66,8 @@ class StripeWH_Handler:
                 print('Order doesnt Try statment >> ', order)
                 order = Order.objects.create(
                         first_name=shipping_details.name,
-                        street= shipping_details.address.line1,
-                        town= shipping_details.address.city,
+                        street=shipping_details.address.line1,
+                        town=shipping_details.address.city,
                         original_bag=bag,
                         stripe_pid=pid,
                 )
@@ -83,10 +84,13 @@ class StripeWH_Handler:
                 print('Order doesnt except >> ', order)
                 if order:
                     order.delete()
-                return HttpResponse (content=f'The payment has failed webhook received: {event["type"]}| Error: {e}',
-                status=500)
+                return HttpResponse(content=f'The payment has
+                                    failed webhook received:
+                                    {event["type"]} | Error: {e}',
+                                    status=500)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received:
+            {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
@@ -94,5 +98,5 @@ class StripeWH_Handler:
         Handle the payment_intent.payment_failed webhook from Stripe
         """
         return HttpResponse(
-            content=f'The payment has failed webhook received: {event["type"]}',
-            status=200)
+            content=f'The payment has failed webhook received:
+            {event["type"]}', status=200)

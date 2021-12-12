@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect, HttpResponse
+from django.shortcuts import (render, redirect, reverse, get_object_or_404,
+                              HttpResponseRedirect, HttpResponse)
 from django.views.decorators.http import require_POST
 from .forms import UsersOrderForm, Order
 from django.contrib import messages
@@ -27,7 +28,7 @@ def cache_checkout_data(request):
         print('Printing the PID', pid)
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request,'Sorry cannot process right now')
+        messages.error(request, 'Sorry cannot process right now')
         return HttpResponse(content=e, status=400)
 
 
@@ -63,7 +64,8 @@ def checkout(request):
                         quantity=item_data,
                     )
                     order_line_item.save()
-            return(HttpResponseRedirect(reverse('order_complete', args=[order.users_order_number])))
+            return(HttpResponseRedirect(
+                reverse('order_complete', args=[order.users_order_number])))
     else:
         cyberplates_for_checkout = request.session.get('bag', {})
         if not cyberplates_for_checkout:
@@ -95,7 +97,9 @@ def order_complete(request, users_order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        #Attach the user's profile to the order
+        '''
+        Attach the user's profile to the order
+        '''
         order.user_profile = profile
         order.save()
 
@@ -108,21 +112,20 @@ def order_complete(request, users_order_number):
                 'def_street ': order.street,
                 'def_town ': order.town,
             }
-            user_profile_form = user_profile_form(profile_data, instance=profile)
+            user_profile_form = user_profile_form(
+                profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+        current_bag = bag_contents(request)
+        total = current_bag['grand_total']
+        if 'bag' in request.session:
+            del request.session['bag']
 
-    current_bag = bag_contents(request)
-    total = current_bag['grand_total']
+            template = 'checkout/order_success.html'
+            context = {
+                'order': order,
+                'total': total
+            }
 
-    if 'bag' in request.session:
-        del request.session['bag']
-
-    template = 'checkout/order_success.html'
-    context = {
-        'order': order,
-        'total': total
-    }
-
-    return render(request, template, context)
+            return render(request, template, context)
