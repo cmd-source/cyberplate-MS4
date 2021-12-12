@@ -54,7 +54,7 @@
   <!--Navbar taken from bootstrap-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">
-      <i class="fab fa-uncharted fa-2x"></i> Cyberplate
+      <i class="fab fa-uncharted fa-lg"></i> Cyberplate
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,20 +69,20 @@
         <li class="nav-item">
           <a class="nav-link" href="/products/artists/">Artists</a>
         </li>
-        <li class="nav-item ml-3">
-          <a class="nav nav-link" href="/products/?category_selected=1">Space</a>
+        <li class="nav-item ml-1 d-flex justify-content-center">
+          <a class="nav nav-link" href="/products/?category_selected=1"><i class="fas fa-user-astronaut fa-lg "></i> Space</a>
         </li>
-        <li class="nav-item ml-1">
-          <a class="nav nav-link" href="/products/?category_selected=2">Cryptocurrency</a>
+        <li class="nav-item d-flex justify-content-center">
+          <a class="nav nav-link" href="/products/?category_selected=2"><i class="fab fa-bitcoin fa-lg"></i> Cryptocurrency</a>
         </li>
-        <li class="nav-item ml-1">
-          <a class="nav nav-link" href="/products/?category_selected=3">Nature</a>
+        <li class="nav-item d-flex justify-content-center">
+          <a class="nav nav-link" href="/products/?category_selected=3"><i class="fab fa-canadian-maple-leaf fa-lg"></i> Nature</a>
         </li>
-        <li class="nav-item ml-1">
-          <a class="nav nav-link" href="/products/?category_selected=4">Games</a>
+        <li class="nav-item d-flex justify-content-center">
+          <a class="nav nav-link" href="/products/?category_selected=4"><i class="fas fa-gamepad fa-lg"></i> Games</a>
         </li>
       </ul>
-        </div>
+        
 
       <form class="form-inline my-2 my-lg-0 ml-auto" method="GET" action="/products/">
         <input class="form-control mr-sm-2" type="search" NAME="search" placeholder="Search" aria-label="Search">
@@ -96,10 +96,16 @@
           aria-haspopup="true" aria-expanded="false">User<i class=" ml-3 fas fa-user"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          
-              <a class="dropdown-item nav nav-link d-flex" href="/accounts/signup/"><i class="ml-3 fas fa-user-plus mr-1 fa-1x"></i>  Register</a>
-              <a class="dropdown-item nav nav-link d-flex" href="/accounts/login/"> <i class="ml-3 fas fa-sign-in-alt mr-1 fa-1x"></i>   Login</a>
-          
+          {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'add_product' %}"><i class="ml-3 fab fa-uncharted mr-1 fa-lg"></i> Add</a>
+              {% endif %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'profile' %}"> <i class=" ml-3 fas fa-user mr-1 fa-lg"></i> My Profile</a>
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_logout' %}"> <i class=" ml-3 fas fa-sign-out-alt mr-1 fa-lg"></i> Logout</a>
+          {% else %}
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_signup' %}"><i class="ml-3 fas fa-user-plus mr-1 fa-lg"></i> Register</a>
+              <a class="dropdown-item nav nav-link d-flex" href="{% url 'account_login' %}"> <i class="ml-3 fas fa-sign-in-alt mr-1 fa-lg"></i>  Login</a>
+          {% endif %}
         </div>
       </div>
 
@@ -111,6 +117,7 @@
           
         </p>
       </a>
+    </div>
   </nav>
   <div class="text-center">
     <p class="navbar-light bg-dark text-white mx-auto">
