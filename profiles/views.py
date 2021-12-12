@@ -6,6 +6,7 @@ from .forms import UsersProfileForm
 from checkout.models import Order
 from django.contrib.admin.views.decorators import staff_member_required
 
+
 # Create your views here.
 @login_required
 def profile(request):
@@ -30,7 +31,6 @@ def profile(request):
     }
 
     return render(request, template, context)
-    
 
 
 def order_history(request, users_order_number):
@@ -38,7 +38,7 @@ def order_history(request, users_order_number):
 
     messages.info(request, (f'This is a previous order'))
 
-    template ='checkout/order_success.html'
+    template = 'checkout/order_success.html'
     context = {
         'order': order,
         'from_profile': True,
