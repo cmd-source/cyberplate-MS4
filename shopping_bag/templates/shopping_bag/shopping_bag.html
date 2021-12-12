@@ -11,7 +11,17 @@
 <div class="container h-100">
   <div class="row h-100">
     <div class="col-12">
-      <h2 class="logo-font mt-5 text-white bg-dark p-2 rounded-lg">My Cyberplate Shopping Bag</h2>
+      <div class="bg-secondary rounded-lg">
+      <h2 class="logo-font mt-5 text-white py-2 ml-2">My Cyberplate Shopping Bag</h2>
+      <p class="text-white logo-font py-2 ml-2"> Your order summery is below: </p>
+      {% if bag_items %}
+      <div class="row">
+        <div class="col">
+      <div class="d-block d-md-none"> {% include "shopping_bag/checkout-button.html" %}</div>
+    </div>
+  </div>
+      {% endif %}
+    </div>
     </div>
 
 
@@ -19,14 +29,6 @@
       <div class="col-12">
         {% if bag_items %}
         <div class="d-block d-md-none">
-          <div class="row">
-            <div class="col">
-              <p class="text-white text-center"> Your order summery is below: </p>
-              <div class="col d-flex justify-content-between">
-                {% include "shopping_bag/checkout-button.html" %}
-              </div>
-            </div>
-          </div>
           <br>
           {% for cyberplate in bag_items %}
           <div class="row target-bag-color target-bag-sm rounded">
@@ -122,7 +124,7 @@
             {% endfor %}
 
           </table>
-          <div class="d-flex justify-content-around mb-2">
+          <div class="mb-2">
             <!--<a href="{% url 'products' %}" class="float-left btn bg-dark rounded py-3 ml-2 text-white mt-3"><i
                 class="fas fa-caret-square-left"></i> Cyberplates</a>
             <a href="{% url 'checkout' %}"
