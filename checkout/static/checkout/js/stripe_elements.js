@@ -103,7 +103,7 @@ form.addEventListener('submit', function (ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log(form)
+                    console.log(form);
                     form.submit();
                 }
             }
@@ -111,5 +111,5 @@ form.addEventListener('submit', function (ev) {
 
     }).fail(function() {
         location.reload();
-    })
+    });
     });
