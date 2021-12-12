@@ -44,10 +44,10 @@ def adjust_bag(request, item_id):
 
     if quantity > 0:
         bag[item_id] = quantity
-        messages.info(request, f'You have updated your bag')
+        messages.info(request, f'You have updated your bag with {product.name}')
     else:
         bag.pop(item_id)
-        messages.info(request, f'You have updated your bag')
+        messages.info(request, f'You have updated your bag {product.name}')
 
     request.session['bag'] = bag
     return redirect(reverse('shopping_bag'))
@@ -62,7 +62,7 @@ def remove(request, item_id):
     bag = request.session.get('bag', {})
 
     bag.pop(item_id)
-    messages.info(request, f'You have removed from your bag')
+    messages.info(request, f'You have removed {product.name} from your bag')
 
     request.session['bag'] = bag
     return HttpResponse(status=200)

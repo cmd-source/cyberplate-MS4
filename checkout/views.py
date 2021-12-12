@@ -116,7 +116,7 @@ def order_complete(request, users_order_number):
                 profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-
+        
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         if 'bag' in request.session:
