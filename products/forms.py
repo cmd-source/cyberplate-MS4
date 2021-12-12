@@ -21,4 +21,5 @@ class ProductForm(forms.ModelForm):
             'image_url': 'image_url',
             'image': 'image',
             'product_key': 'product_key',
+            'product_tags': 'product_tags'
             }

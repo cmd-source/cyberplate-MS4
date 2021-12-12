@@ -31,8 +31,7 @@ def products(request):
                 messages.error(request, 'This is not a vaild search')
                 return redirect(reverse('products'))
 
-            searched_query = Q(name__icontains=search
-                               ) | Q(description__icontains=search)
+            searched_query = Q(name__icontains=search) | Q(description__icontains=search) | Q(product_tags__icontains=search)
             all_products = all_products.filter(searched_query)
 
     context = {

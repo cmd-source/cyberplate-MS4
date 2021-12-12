@@ -19,6 +19,8 @@ class Artist(models.Model):
     image_url = models.URLField(null=True, blank=True, max_length=1000)
     image = models.ImageField(null=True, blank=True)
     artist_key = models.IntegerField(null=True, blank=True)
+    artist_tags = models.TextField(max_length=300,
+                                   null=True, blank=True)
 
     def __str__(self):
         return self.display_name
@@ -34,6 +36,8 @@ class Product(models.Model):
     image_url = models.URLField(null=True, blank=True, max_length=1000)
     image = models.ImageField(null=True, blank=True)
     product_key = models.IntegerField(null=True, blank=True)
+    product_tags = models.TextField(max_length=300,
+                                    null=True, blank=True)
 
     def __str__(self):
         return self.name
