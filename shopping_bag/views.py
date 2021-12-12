@@ -12,7 +12,9 @@ def shopping_bag(request):
 
 
 def add_product_to_bag(request, item_id):
-    ''' A view to add items to the shopping bag'''
+    '''
+    A view to add items to the shopping bag
+    '''
 
     product = Product.objects.get(pk=item_id)
 
@@ -31,9 +33,11 @@ def add_product_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
-
 def adjust_bag(request, item_id):
-    """Adjust the quantity of the specified product to the specified amount"""
+    """
+    Adjust the quantity of the specified
+    product to the specified amount
+    """
 
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
@@ -49,15 +53,16 @@ def adjust_bag(request, item_id):
     return redirect(reverse('shopping_bag'))
 
 
-
 def remove(request, item_id):
-    """Adjust the quantity of the specified product to the specified amount"""
+    """
+    Adjust the quantity of the specified
+    product to the specified amount
+    """
 
     bag = request.session.get('bag', {})
 
     bag.pop(item_id)
     messages.info(request, f'You have removed from your bag')
-
 
     request.session['bag'] = bag
     return HttpResponse(status=200)

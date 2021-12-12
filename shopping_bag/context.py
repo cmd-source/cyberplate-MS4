@@ -3,7 +3,11 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
-#This context processor was taken directly from the CI walkalong project Boutique Ado
+'''
+This context processor was taken directly from
+the CI walkalong project Boutique Ado
+'''
+
 
 def bag_contents(request):
 
@@ -33,7 +37,6 @@ def bag_contents(request):
                     'product': product,
                     'size': size,
                 })
-
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = 10
