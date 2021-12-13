@@ -60,57 +60,18 @@
             {% for cyberplate in bag_items %}
             <tr>
               <td>
-                <!--
-                <img class="img-fluid img-bag-view rounded-lg mt-4 mb-2 " src="{{ MEDIA_URL }}{{ cyberplate.product.image }}" alt="{{ cyberplate.product.name }}">
-                  -->
+
                 {% include "shopping_bag/image.html" %}
               </td>
               <td class=" py-5 text-white">
-                <!--
-                  <p class="text-white"><strong> {{ cyberplate.product.name }} </strong></p>
-                  <p class="text-white"> {{ cyberplate.product.description }} </p>
-                  -->
+
                 {% include "shopping_bag/info.html" %}
               </td>
               <td class=" py-5 text-white w-20">
                 <p class="text-white mt-4"><strong>€{{ cyberplate.product.price }} </strong></p>
               </td>
               <td class=" py-5 text-white w-25">
-                <!--
-                  <form class="form update-form" method="POST" action="{% url 'adjust_bag' cyberplate.item_id %}">
-                    {% csrf_token %}
-                    <div class=" p-3 mx-auto rounded">
-                      <div class="input-group">
-                        <div class="input-group-prepend align-items-center h-25">
-                          <a class="decrement-qty btn bg-info h-50 mr-1 mt-1 rounded-lg"
-                            data-item_id="{{ cyberplate.id }}" id="decrement-qty_{{ cyberplate.id }}">
-                            <span>
-                              <i class="fas fa-minus fa-sm"></i>
-                            </span>
-                          </a>
-                        </div>
-      
-      
-                        <input type="number" name="quantity" value="{{cyberplate.quantity}}" min="1" id="id_qty_{{ cyberplate.id }}"
-                          data-item_id="{{ cyberplate.id }}"
-                          class="form-control mr-auto w-25 text-center mb-5 qty_input rounded-lg">
-      
-      
-                        <div class="input-group-append align-items-center ml-1 h-25">
-                          <a class="increment-qty btn bg-primary h-50 rounded-lg mt-1" data-item_id="{{ cyberplate.id }}"
-                            id="increment-qty_{{ cyberplate.id }}">
-                            <span>
-                              <i class="fas fa-plus fa-sm"></i>
-                            </span>
-                          </a>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </form>
-                  <a class="update-link text-info btn bg-dark rounded text-success"><small>Update</small></a>
-                  <a class="remove-item text-danger float-right btn bg-dark rounded" id="remove_{{ cyberplate.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
-                -->
+
                 {% include "shopping_bag/quantity.html" %}
 
               </td>
@@ -125,12 +86,6 @@
 
           </table>
           <div class="mb-2">
-            <!--<a href="{% url 'products' %}" class="float-left btn bg-dark rounded py-3 ml-2 text-white mt-3"><i
-                class="fas fa-caret-square-left"></i> Cyberplates</a>
-            <a href="{% url 'checkout' %}"
-              class="btn btn-success float-right rounded py-3 mr-2 text-white mt-3">Checkout <i
-                class="fas fa-shopping-cart"></i></a>
-            -->
             {% include "shopping_bag/checkout-button.html" %}
           </div>
         </div>
@@ -160,7 +115,7 @@
   {{ block.super }}
   {% include 'products/includes/quantity_input_script.html' %}
 
-  <script type="text/javascript">
+  <script>
     // Update quantity on click
     $('.update-link').click(function (e) {
       var form = $(this).prev('.update-form');

@@ -3,27 +3,27 @@
     <div class=" p-3 mx-auto rounded">
       <div class="input-group">
         <div class="input-group-prepend align-items-center h-25">
-          <a class="decrement-qty btn bg-info h-50 mr-1 mt-1 rounded-lg"
-            data-item_id="{{ cyberplate.id }}" id="decrement-qty_{{ cyberplate.id }}">
+          <button class="decrement-qty btn bg-info h-50 mr-1 mt-1 rounded-lg"
+            data-item_id="{{ cyberplate.item_id }}" id="decrement-qty_{{ cyberplate.item_id }}">
             <span>
               <i class="fas fa-minus fa-sm"></i>
             </span>
-          </a>
+          </button>
         </div>
 
 
-        <input type="number" name="quantity" value="{{cyberplate.quantity}}" min="1" id="id_qty_{{ cyberplate.id }}"
-          data-item_id="{{ cyberplate.id }}"
+        <input type="number" name="quantity" value="{{cyberplate.quantity}}" min="1" id="id_qty_{{ cyberplate.item_id }}"
+          data-item_id="{{ cyberplate.item_id }}"
           class="form-control mr-auto w-25 text-center mb-5 qty_input rounded-lg">
 
 
         <div class="input-group-append align-items-center ml-1 h-25">
-          <a class="increment-qty btn bg-primary h-50 rounded-lg mt-1" data-item_id="{{ cyberplate.id }}"
-            id="increment-qty_{{ cyberplate.id }}">
+          <button class="increment-qty btn bg-primary h-50 rounded-lg mt-1" data-item_id="{{ cyberplate.item_id }}"
+            id="increment-qty_{{ cyberplate.item_id }}">
             <span>
               <i class="fas fa-plus fa-sm"></i>
             </span>
-          </a>
+          </button>
         </div>
         
       </div>
