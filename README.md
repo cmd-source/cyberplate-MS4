@@ -248,7 +248,245 @@ For this project I created my own data, everything was added manually and the cr
 
 The Validation for the HTML was done by viewing the page source.
 
+- [HTML home](media/HTML_home.PNG)
+- [HTML products](media/HTML_Products.PNG)
+- [HTML products view](media/HTML_Products_view.PNG)
+- [HTML artist](media/HTML_Artists.PNG)
+- [HTML artist view](media/HTML_Artists_view.PNG)
+- [HTML checkout](media/HTML_Checkout.PNG)
+- [HTML order history](media/HTML_order_history.PNG)
+- [HTML profile](media/HTML_Profile.PNG)
+
+The Validation for the Javascript/JQuery was done by pasting the code into https://jshint.com/
+
+- [JS Stripe](media/JSVal_Stripe.PNG)
+- [JS Product/Artist/Quantity](media/JSVal_Product_Artist_Quantity.PNG)
+
+The Validation for the python was done on http://pep8online.com/
+
 # Deployment
+
+To deploy this project Heroku is needed for the backend, a IDE (In my case gitpod) Github was used as a repository and AWS used to host the static files and Stripe to delivery a secure payments. Accounts will be needed on these before starting. It is important to note that this project wont run locally unless the enviroment variables are set up correctly within the enviroment. These variables and values must be the same within the Heroku deployment tab.
+
+## Deploying On Heroku
+
+- Go to Heroku.com and set up an account
+- Create an app with a unique name
+- Select a region
+- Go to the "Resources" tab 
+- Select Postgres
+
+To ensure Heroku installs all the apps requirements on deployment In the IDE enter:
+- pip3 install dj_database_url
+- pip3 install psycopg2-binary
+- pip3 freeze > requirements.txt
+
+Take the Database config variable from Heroku in the Settings tab 
+- Place it in the Settings file in the IDE to be used as a database such as below:
+    - ![database](media/Database.PNG)
+- Import dj_database_url in the Settings file
+
+
+Because we are now connecting to Heroku, migrations need to be run so in the IDE enter:
+
+- python3 manage.py showmigrations
+- python3 manage.py migrate 
+
+To load the data first the Artist and Category data must be loaded before loading the Products. To do this in the IDE enter:
+
+- python3 manage.py load data Artists
+- python3 manage.py load data Category
+- python3 manage.py load data Product
+
+Create a Superuser account to login with by:
+
+- python3 manage.py create superuser and then enter the user details
+
+To get a webserver install gunicorn by entering:
+
+- pip3 install gunicorn
+- pip3 freeze > requirements.txt
+
+Next create a Procfile and enter into that file:
+- "web: gunicorn APP-NAME-GOES-HERE.wsgi:application"
+
+As AWS will be used for hosting the static files, we need to omnit them from Heroku. To do this login into Heroku from the IDE by using:
+- heroku login -i
+- Heroku config:set DISABLE_COLLECTSTATIC=1 –-app APP-NAME-GOES-HERE
+- In the Settings file ALLOWED_HOSTS will need to be altered to ['APP-NAME-GOES-HERE.herokuapp.com', 'localhost']
+
+Now deploy to Heroku by:
+- git add .
+- git commit -m "Deploying to Heroku"
+- heroku git:remote -a APP-NAME-GOES-HERE
+- git push heroku master
+
+To ensure that the workspace deployments flow through automatically to Heroku
+- Go to Heroku.com
+- Go to the "Deploy" tab
+- Go to the "Deployment method"
+- Search for the repository name, connect and "Enable Automatic Deployments"
+
+Replace the "SECRET_KEY" variable that is in the Settings file with a new one saved to Heroku
+- Generate a new key
+- Go to the config vars on the "Settings" tab on Heroku
+- Add in the newly generated key 
+- Then back in the Settings file replace the "SECRET_KEY" with a call to get it from the enviroment like below:
+    - ![key](media/key.PNG)
+
+Push these changes to github by:
+- git add .
+- git commit -m "Deploying"
+- git push
+
+
+## Deploying On AWS
+
+- Go to https://aws.amazon.com/
+- Create an account to use the s3 service for our static files
+- Add in the needed details and select the closest region
+- AWS will require card details 
+- Once the account is created go to the AWS Management Console and select the s3 service
+- Create a new "Bucket"
+- Unblock all public access, click acknowledge and click "Create"
+
+Within the "Bucket"
+- Go to the "Properties" tab and select "Static web hosting"
+- Fill in default values for the index and error selections
+- Click save
+
+Go to the "Permissions" tab
+- For the "Cors configuration" add in the below to allow access between this "Bucket" and the Heroku deployment from above
+
+        [
+            {
+                "AllowedHeaders": [
+                    "Authorization"
+                ],
+                "AllowedMethods": [
+                    "GET"
+                ],
+                "AllowedOrigins": [
+                    "*"
+                ],
+                "ExposeHeaders": []
+            } 
+        ]
+
+Go to the "Policy" tab and select the policy generator
+- Policy type is s3 Bucket Policy
+- Allow all principles by *
+- Actions are "get object" 
+- Copy in the ARN
+- Click "Add Statment", then "Generate Policy" 
+- Copy this policy into the "Buck Policy Editor" 
+- Include a /* at the and of the ARN so that the policy looks like this
+
+        {
+            "Version": "2012-10-17",
+            "Id": "Policy1638960375040",
+            "Statement": [
+                {
+                    "Sid": "Stmt1638960369369",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": "s3:*",
+                    "Resource": "arn:aws:s3:::cyberplate-ms4/*"
+                }
+            ]
+        }
+
+- In the "Access control list" ensure that everyone has access which looks like the below :
+ ![everyone](media/everyone.PNG)
+
+A user must now be created to access this "Bucket"
+ - Go to IAM
+ - Click "Groups" and create a new group
+ - Click "Policies", go to the json tab and import managed policy by selecting "AmazonS3FullAccess"
+ - Add the ARN into the policy
+ - Click review policy, give the policy a name and description and click create
+
+Now attach the policy to the group that was created
+ - Go to Groups
+ - Click the group that was created
+ - Click "attach policy"
+ - Find the policy that was created
+
+Now a user must be created and placed within the group
+- Click "Users"
+- Click "Add user" 
+- Create a user
+- Allow programmatic access
+- Place the user into the group 
+- Download the csv file at the end which contains the users access which will be used to authenticate them
+
+Django must now be connected to s3, in order to do this go back over to the IDE(Gitpod) and use the commands:
+
+- pip3 install boto3
+- pip3 install django-storages
+- pip3 freeze > requirements.txt
+
+Then in the Settings file add:
+- "storages" to the Django installed apps
+
+![storages](media/storages.PNG)
+
+- Then at the end of the Settings file add the below code:
+
+    if 'USE_AWS' in os.environ:
+        # Cache control
+        AWS_S3_OBJECT_PARAMETERS = {
+            'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+            'CacheControl': 'max-age=94608000',
+        }
+        AWS_STORAGE_BUCKET_NAME = 'cyberplate-ms4'
+        AWS_S3_REGION_NAME = 'eu-west-1'
+        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+        AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+Then over in Heroku add these new AWS keys to the config variables in the "Settings" tab
+    - Add the two new keys into the config variables
+    - Add another key into the config variables and set its value equal to "True"
+    - Remove the disable collectstatic variable
+
+Back in IDE (gitpod) create a new file called "custom_storages.py" and add the below into that file:
+
+        from django.conf import settings
+        from storages.backends.s3boto3 import S3Boto3Storage
+
+
+        class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+
+        class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+
+Back in the settings file add the below code to our if 'USE_AWS' in os.environ statement:
+
+        # Static and media files
+        STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+        STATICFILES_LOCATION = 'static'
+        DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+        MEDIAFILES_LOCATION = 'media'
+
+        # Override static and media URLs in production
+        STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+        MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+So that now the full statment should look like:
+
+ ![statement](media/statement.PNG)
+
+Finlly when all that is done we can now push this in the IDE (gitpod) which will automatically flow through to Heroku:
+    - git add .
+    - git commit -m "deployment" 
+    - git push
+
+To add the media files, simply go over to s3 in AWS, within the media folder add the files and upload ensuring "public read" is selected
+
+## Cloning
 
 credits:
 
