@@ -143,9 +143,11 @@ There are many features incorporated in this website taken from what I have lear
 3 To be able to then purchase a design once I find the one Im looking for:
 
    - Users have a payment form which will submit using Stripe to handle payments.
+   - Users will be notified if their card is decline/or payment not made.
    - Users will then be directed to a payment success page showing their otrder details.
 
 ![payment](media/paymentform.PNG)
+![payment_failed](media/payment_failed.PNG)
 ![order](media/previous_order.PNG)
 
 4 To be able to easily update/delete items in my shopping bag before making a payment:
@@ -221,6 +223,7 @@ There are many features incorporated in this website taken from what I have lear
 ## Known Bugs and Issues:
 
 - Currently adding products does allow to go negative but will not submit so it isnt seen as a critical issue 
+
 ![minus](media/minus.PNG)
 
 - Currently the bag view shows a slight amount of space to the right on a medium device. As this has greatly been improved upon already and isnt critical it is something to be improved on in the future.
@@ -242,6 +245,8 @@ For this project I created my own data, everything was added manually and the cr
 ![Schema](media/Schema.PNG)
 
 ## Validators
+
+The Validation for the HTML was done by viewing the page source.
 
 # Deployment
 
