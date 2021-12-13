@@ -117,15 +117,17 @@ def order_complete(request, users_order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
         
-        current_bag = bag_contents(request)
-        total = current_bag['grand_total']
-        if 'bag' in request.session:
-            del request.session['bag']
+    current_bag = bag_contents(request)
+    print("printing current_bag >> ", current_bag)
+    total = current_bag['grand_total']
+    print("printing total >> ", total)
+    if 'bag' in request.session:
+        del request.session['bag']
 
-            template = 'checkout/order_success.html'
-            context = {
-                'order': order,
-                'total': total
-            }
-
-            return render(request, template, context)
+    template = 'checkout/order_success.html'
+    context = {
+        'order': order,
+        'total': total
+    }
+    print("printing context >> ", context)
+    return render(request, template, context)
