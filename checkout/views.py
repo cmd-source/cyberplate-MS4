@@ -63,9 +63,13 @@ def checkout(request):
                     order_line_item.save()
             return(HttpResponseRedirect(
                 reverse('order_complete', args=[order.users_order_number])))
+        else:
+            messages.error(request, 'Sorry there was an issue. \
+                Please check your information.')
     else:
         cyberplates_for_checkout = request.session.get('bag', {})
         if not cyberplates_for_checkout:
+            messages.error(request, "You don't have any items")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -91,6 +95,9 @@ def order_complete(request, users_order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, users_order_number=users_order_number)
     cyberplates_for_checkout = request.session.get('bag', {})
+    messages.success(request, f'Your order is successful! \
+        Your order number is {users_order_number}. \
+            Thank you {order.first_name}.')
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

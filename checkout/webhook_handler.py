@@ -76,8 +76,9 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'The payment has succeeded webhook received: {event["type"]} | Success order in database',
-                status=200)
+                content=f'The payment has succeeded \
+                         webhook received: {event["type"]} | Success \
+                             order in database', status=200)
         else:
             order = None
             try:
@@ -100,11 +101,13 @@ class StripeWH_Handler:
             except Exception as e:
                 if order:
                     order.delete()
-                return HttpResponse(content=f'The payment has failed webhook received: {event["type"]} | Error: {e}',
+                return HttpResponse(content=f'The payment has failed webhook \
+                 received: {event["type"]} | Error: {e}',
                                     status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} | SUCCESS: \
+                Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
@@ -112,4 +115,5 @@ class StripeWH_Handler:
         Handle the payment_intent.payment_failed webhook from Stripe
         """
         return HttpResponse(
-                            content=f'The payment has failed webhook received : {event["type"]}', status=200)
+                            content=f'The payment has failed webhook \
+                             received : {event["type"]}', status=200)
