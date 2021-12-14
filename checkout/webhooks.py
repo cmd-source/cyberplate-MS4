@@ -36,7 +36,6 @@ def webhook(request):
 
     # Set up a webhook handler
     handler = StripeWH_Handler(request)
-    print('Printing handler >> ', handler)
 
     # Map webhook events to relevant handler functions
     event_map = {
@@ -47,14 +46,11 @@ def webhook(request):
 
     # Get the webhook type from Stripe
     event_type = event['type']
-    print('Event type >> ', event_type)
 
     # If there's a handler for it, get it from the event map
     # Use the generic one by default
     event_handler = event_map.get(event_type, handler.handle_event)
-    print('Event handler >> ', event_handler)
 
     # Call the event handler with the event
     response = event_handler(event)
-    print('Response >> ', response)
     return response

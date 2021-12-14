@@ -25,7 +25,6 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
-        print('Printing the PID', pid)
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry cannot process right now')
@@ -36,10 +35,8 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_PRIVATE_KEY
 
-    print(request.method == 'POST')
     if request.method == 'POST':
         cyberplates_for_checkout = request.session.get('bag', {})
-        print('Printing if POST', cyberplates_for_checkout)
         form_data = {
             'first_name': request.POST['first_name'],
             'last_name': request.POST['last_name'],
@@ -118,9 +115,7 @@ def order_complete(request, users_order_number):
                 user_profile_form.save()
 
     current_bag = bag_contents(request)
-    print("printing current_bag >> ", current_bag)
     total = current_bag['grand_total']
-    print("printing total >> ", total)
     if 'bag' in request.session:
         del request.session['bag']
 
@@ -129,5 +124,4 @@ def order_complete(request, users_order_number):
         'order': order,
         'total': total
     }
-    print("printing context >> ", context)
     return render(request, template, context)

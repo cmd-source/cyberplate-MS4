@@ -48,14 +48,12 @@ def products(request):
 
 def product_view(request, product_id):
     ''' Opens a more detailed view of the Cyberplate selected on'''
-    print(f'Product_id from product_view: {product_id}')
     selected_product = get_object_or_404(Product, pk=product_id)
     all_products = Product.objects.all()
     context = {
         'selected_product': selected_product,
         'all_products': all_products
     }
-    # print(product_id)
 
     return render(request, 'products/product_view.html', context)
 
@@ -64,7 +62,6 @@ def artists(request):
     ''' A view to return the artists page'''
 
     all_artists = Artist.objects.all()
-    print(f'All artists: {all_artists}')
     context = {
         'all_artists': all_artists,
     }
@@ -75,9 +72,7 @@ def artists(request):
 def artist_view(request, artist_id):
     '''Opens a more detailed view of the Cyberplate selected on'''
     selected_artist = get_object_or_404(Artist, pk=artist_id)
-    print('selected_artist >>', selected_artist.image)
     artists_products = Product.objects.all().filter(artist=selected_artist)
-    print('artists_products >>', artists_products)
 
     context = {
         'selected_artist': selected_artist,

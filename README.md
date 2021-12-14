@@ -240,6 +240,10 @@ If a user should enter a url that is not in the website they will be directed to
 - There is a brief moment when going from a large to small device that the nav-bar displays slightly off design. As this is non critical and only appears for a span of about 200 pixals it will be improved upon in future.
 ![nav](media/nav.PNG)
 
+
+Currently the total order amount is not rendering through onto the order success template. I am currently still working on this issue and believe the issue is coming from my signals
+![receipt](media/receipt.PNG)
+
 - I have noticed that on the live deployment sometimes AWS will undo the permissions that I have granted for access to all, I am not sure as to why this is. As of writing this README permission are granted and screenshots provided below
 
 ![access1](media/access1.PNG)
