@@ -12,6 +12,8 @@
 
 # UX
 
+![design](media/design.PNG)
+
 #### User Stories
 
 - As an external user I want the following:
@@ -261,6 +263,11 @@ The Validation for the Javascript/JQuery was done by pasting the code into https
 
 - [JS Stripe](media/JSVal_Stripe.PNG)
 - [JS Product/Artist/Quantity](media/JSVal_Product_Artist_Quantity.PNG)
+
+The Validation for the CSS was done by pasting the code into https://jigsaw.w3.org/css-validator/
+
+- [CSS base](media/css_val.PNG)
+- [CSS checkout](media/val_checkout.PNG)
 
 The Validation for the python was done on http://pep8online.com/
 

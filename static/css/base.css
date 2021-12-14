@@ -17,8 +17,8 @@ body {
 
 .home-week-pick {
     height: 300px;
-    max-width: 460;
-    overflow-x: none;
+    max-width: 460px;
+    overflow-x: hidden;
 }
 
 .card {
