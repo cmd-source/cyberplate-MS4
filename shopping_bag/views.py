@@ -60,7 +60,7 @@ def remove(request, item_id):
     Adjust the quantity of the specified
     product to the specified amount
     """
-
+    product = Product.objects.get(pk=item_id)
     bag = request.session.get('bag', {})
 
     bag.pop(item_id)
