@@ -486,7 +486,17 @@ Finlly when all that is done we can now push this in the IDE (gitpod) which will
 
 To add the media files, simply go over to s3 in AWS, within the media folder add the files and upload ensuring "public read" is selected
 
-## Cloning
+## Cloning and Forking
+
+How to clone and deploy this project:
+ - Navigate to the repository where the project is stored.
+ - Click on the Code button which will give the option to download the content and the url.
+ - Copy the url.
+ - In your chosen IDE in the terminal type "git clone (followed by the copied url)".
+
+How to Fork this project:
+ - Log onto github and at the top of this repository there is an option "Fork"
+ - This will give you a copy of the repository
 
 credits:
 
