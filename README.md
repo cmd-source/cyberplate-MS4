@@ -1,5 +1,7 @@
 # Cyberplate
 
+![design](media/design.PNG)
+
 # Forth Milestone Project 
 
 ## Table of Contents
@@ -11,8 +13,6 @@
 6. Credits and Acknowledgements
 
 # UX
-
-![design](media/design.PNG)
 
 #### User Stories
 
