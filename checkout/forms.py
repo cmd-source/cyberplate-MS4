@@ -1,14 +1,14 @@
 from django import forms
 from .models import Order
 
+
 class UsersOrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('first_name', 'last_name', 'email', 'phone' , 'street', 'town', 'country',)
+        fields = ('first_name', 'last_name', 'email',
+                  'phone', 'street', 'town', 'country',)
 
-
-
-        # Taken and altered from the Code Institutes walkthrough Project Boutique Ado
+# Taken and altered from the Code Institutes walkthrough Project Boutique Ado
         def __init__(self, *args, **kwargs):
             """
             Add placeholders and classes, remove auto-generated

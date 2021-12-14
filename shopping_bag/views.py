@@ -38,16 +38,18 @@ def adjust_bag(request, item_id):
     Adjust the quantity of the specified
     product to the specified amount
     """
-
+    product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
 
     if quantity > 0:
         bag[item_id] = quantity
-        messages.info(request, f'You have updated your bag with {product.name}')
+        messages.info(request,
+                      f'You have updated your bag with {product.name}')
     else:
         bag.pop(item_id)
-        messages.info(request, f'You have updated your bag {product.name}')
+        messages.info(request,
+                      f'You have updated your bag with {product.name}')
 
     request.session['bag'] = bag
     return redirect(reverse('shopping_bag'))

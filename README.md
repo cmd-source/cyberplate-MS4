@@ -501,6 +501,8 @@ credits:
 - https://www.pdvg.it/wp-content/uploads/2019/03/image.jpg
 - https://wallpaperaccess.com/hd-nature
 - https://wall.alphacoders.com/big.php?i=1135135
+- https://wallpapersafari.com/halo-wallpaper-hd-4k/
+- https://hdqwalls.com/bitcoin-cryptocurrency5k-wallpaper
 
 Rescources that provided me with help:
 - https://www.w3schools.com/bootstrap4/bootstrap_flex.asp
