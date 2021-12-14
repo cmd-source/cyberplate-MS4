@@ -151,6 +151,7 @@ There are many features incorporated in this website taken from what I have lear
 ![payment](media/paymentform.PNG)
 ![payment_failed](media/payment_failed.PNG)
 ![order](media/previous_order.PNG)
+![success](media/success.PNG)
 
 4 To be able to easily update/delete items in my shopping bag before making a payment:
 
@@ -180,8 +181,10 @@ If a user should enter a url that is not in the website they will be directed to
     - This website it visually captivating, with a very rich background image and product images used to provide a positive user experience.
     - The hompage maximizes on the visuals by keeping product content on the left so that the planet on the right isnt covered up.
     - A carousel underneath rotates through similar products to make use of the space and peak an external users interest further.
+    - The navbar icons on top also add vibrance to the feel of the site
 
 ![visual](media/visual.PNG)
+![navbaricon](media/navbar.PNG)
 
 2 To have a website that is easy to navigate:
 
@@ -210,12 +213,15 @@ If a user should enter a url that is not in the website they will be directed to
 
     - Only site owners have the ability to add/edit/delete and update products from sign in.
     - Delete/Edit buttons will show for the superuser and an Add option in the top right and corner under user
- 
 
 ![CRUD](media/crud.PNG)
 ![Edit](media/edit.PNG)
 ![Add](media/addproduct.PNG)
 ![delete](media/delete.PNG)
+
+6 Its important to note here that users cannot force access through the url without the correct login 
+
+![force](media/force.PNG)
 
 ## Devices Tested:
 
