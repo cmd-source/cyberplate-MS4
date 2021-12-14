@@ -168,6 +168,11 @@ There are many features incorporated in this website taken from what I have lear
 ![userprofile](media/user_profile.PNG)
 ![previous_order](media/previous_order.PNG)
 
+If a user should enter a url that is not in the website they will be directed to a custom 404 page and directed back
+
+![404](media/404.PNG)
+
+
 ### External User
 
 1 To have a visually apealling website that draws users in once they land on the homepage:
@@ -205,6 +210,7 @@ There are many features incorporated in this website taken from what I have lear
 
     - Only site owners have the ability to add/edit/delete and update products from sign in.
     - Delete/Edit buttons will show for the superuser and an Add option in the top right and corner under user
+ 
 
 ![CRUD](media/crud.PNG)
 ![Edit](media/edit.PNG)
