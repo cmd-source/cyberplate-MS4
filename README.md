@@ -228,7 +228,7 @@ If a user should enter a url that is not in the website they will be directed to
  - iPad
  - Galaxy Fold
 
-## Known Bugs and Issues:
+## Known Bugs, Issues and fixes:
 
 - Currently adding products does allow to go negative but will not submit so it isnt seen as a critical issue 
 
@@ -240,9 +240,17 @@ If a user should enter a url that is not in the website they will be directed to
 - There is a brief moment when going from a large to small device that the nav-bar displays slightly off design. As this is non critical and only appears for a span of about 200 pixals it will be improved upon in future.
 ![nav](media/nav.PNG)
 
+The total amount originally wasn't rendering through, however this is now fixed and is displaying correctly. The wrong field was being used in the model and has been solved with the below code 
 
-Currently the total order amount is not rendering through onto the order success template. I am currently still working on this issue and believe the issue is coming from my signals
+        self.order_total = self.lineitems.aggregate(Sum(
+        'lineitem_total'))['lineitem_total__sum'] or 0
+        self.grand_total = self.order_total
+        self.save()
+
+        instance.order_item.update_total()
+
 ![receipt](media/receipt.PNG)
+![order_fix](media/order_fix.PNG)
 
 - I have noticed that on the live deployment sometimes AWS will undo the permissions that I have granted for access to all, I am not sure as to why this is. As of writing this README permission are granted and screenshots provided below
 

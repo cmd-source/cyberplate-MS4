@@ -14,7 +14,6 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
-        print("WEBHOOK RAN:")
 
     def handle_event(self, event):
         """
@@ -75,7 +74,6 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-            print("confirmation >>>",_send_confirmation_email(order))
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'The payment has succeeded webhook received: {event["type"]} | Success order in database',
@@ -83,7 +81,6 @@ class StripeWH_Handler:
         else:
             order = None
             try:
-                print('Order doesnt Try statment >> ', order)
                 order = Order.objects.create(
                         first_name=shipping_details.name,
                         street=shipping_details.address.line1,
@@ -101,12 +98,10 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
             except Exception as e:
-                print('Order doesnt except >> ', order)
                 if order:
                     order.delete()
                 return HttpResponse(content=f'The payment has failed webhook received: {event["type"]} | Error: {e}',
                                     status=500)
-        print("confirmation >>>",_send_confirmation_email(order))
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
